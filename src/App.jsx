@@ -1,25 +1,28 @@
 import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // ! Components
+import NavBar from "./components/NavBar/NavBar";
 
 // ! Pages
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
+import Campsites from "./pages/Campsites/ListCampsite/ListCampsite";
 
 // ! Utilities
 import { getUser, removeToken } from "./utilities/auth";
-import NavBar from "./components/NavBar/NavBar";
 
 export default function App() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(getUser());
 
   const navigate = useNavigate();
 
   const handleSignOut = () => {
-    removeToken();
-    setUser(null);
-    navigate("/signin");
+    removeToken()
+    setUser(null)
+    navigate("/signin")
+    console.log(user)
   };
 
   return (
@@ -37,7 +40,7 @@ export default function App() {
     </>
     }
       <Routes>
-        <Route path="/"></Route>
+        <Route path="/campsites" element={<Campsites />} />
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
       </Routes>
