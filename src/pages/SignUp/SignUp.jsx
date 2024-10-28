@@ -9,6 +9,7 @@ import { signup } from "../../services/userService";
 export default function SignUp(props) {
   const [formData, setFormData] = useState({
     username: "",
+    email: '',
     password: "",
     confirmPassword: "",
   });
@@ -38,6 +39,10 @@ export default function SignUp(props) {
           <div>
             <label htmlFor="username">Username:</label>
             <input type="text" name="username" placeholder="John Doe" value={formData.username} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor='email'>Email:</label>
+            <input type='email' name='email' placeholder='johndoe@gmail.com' value={formData.email} onChange={handleChange} />
           </div>
           <div>
             <label htmlFor="password">Password:</label>

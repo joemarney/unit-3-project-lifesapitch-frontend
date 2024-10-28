@@ -24,9 +24,18 @@ export default function App() {
 
   return (
     <main>
-      <NavBar user={user} />
-      <h1>Jinn Productions</h1>
-      <h2>Does this work</h2>
+      <NavBar user={user} handleSignOut={handleSignOut} />
+      {user ?
+      <>
+      <h1>You are signed In</h1>
+      <h2>Jinn Productions</h2>
+      </>
+    :
+    <>
+    <h1>You are not signed in</h1>  
+    <h2>Jinn Productions</h2>
+    </>
+    }
       <Routes>
         <Route path="/"></Route>
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
