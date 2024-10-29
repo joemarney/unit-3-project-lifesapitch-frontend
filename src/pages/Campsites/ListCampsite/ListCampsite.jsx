@@ -11,6 +11,7 @@ import ShowCampsite from '../ShowCampsite/ShowCampsite';
 
 
 // ! Styles
+import styles from './ListCampsite.module.scss'
 
 export default function ListCampsite() {
 
@@ -29,7 +30,7 @@ export default function ListCampsite() {
     }, [])
 
     return (
-        <main>
+        <main className={styles.container}>
             <h1>Welcome to the Campsites</h1>
 
             <AddCampsite setSites={setSites} />

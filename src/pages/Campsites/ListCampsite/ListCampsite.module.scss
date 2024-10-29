@@ -1,0 +1,15 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+
+    article {
+    width: fit-content;
+    height: fit-content;
+    padding: 14px 21px;
+    border-radius: 5px;
+    box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+    -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+    -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+    }
+}
