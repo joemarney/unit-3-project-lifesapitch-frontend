@@ -1,37 +1,32 @@
-import axios from 'axios'
-import {useState} from 'react'
+import { imageUpload } from '../../services/imageUpload'
 
-export default function ImageUpload() {
-    const [selectedFiles, setSelectedFiles] = useState([])
+export default function ImageUpload(props) {
 
-    function handleFileChange() {
-        setSelectedFiles([...selectedFiles, ...Array.from(e.target.files)])
-    }
-
-    async function handleUpload() {
-        const formData = new FormData()
-        selectedFiles.forEach((file) => {
-            formData.append('file', file)
-        })
-
+    async function handleImage(event) {
         try {
-            const response = await axios.post(
-                `https://api.cloudinary.com/v1_1/${}/upload`, formData,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    }
-                }
-            )
-            console.log(response.data);
+            const files = event.target.files
+
+            const images = []
+
+            for(let file of files) {
+                const { data } = await imageUpload(file)
+
+                images.push(data.secure_url)
+            }
+
+            props.setFormData({...props.formData, [props.fieldName]: images})
         } catch (error) {
             console.log(error);
+            console.log('Handle Image isnt working')
         }
     }
 
     return (
         <div>
-            
-            </div>
+            {props.formData.images.map((image) => {
+                return <img key={image} src={image} style={{width: '200px'}}/>
+            })}
+            <input type='file' name='image' multiple onChange={handleImage} />
+        </div>
     )
 }

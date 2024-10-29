@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Route, Routes } from 'react-router-dom';
 
+
+// ! Services
 import { index } from '../../../services/campsiteService';
 
 // ! Pages
-
-import AddCampsite from '../AddCampsite/AddCampsite';
-import ShowCampsite from '../ShowCampsite/ShowCampsite';
-
+// import AddCampsite from '../AddCampsite/AddCampsite';
 
 // ! Styles
 import styles from './ListCampsite.module.scss'
@@ -33,7 +31,7 @@ export default function ListCampsite() {
         <main className={styles.container}>
             <h1>Welcome to the Campsites</h1>
 
-            <AddCampsite setSites={setSites} />
+            {/* <AddCampsite setSites={setSites} /> */}
 
 
             <h3>Here you will find all of the campsites around the UK!</h3>
@@ -49,8 +47,8 @@ export default function ListCampsite() {
                             <p>{site.location}</p>
                         </article>
                     </Link>
-                    )
-                })}
+                )
+            })}
         </main>
     )
 }

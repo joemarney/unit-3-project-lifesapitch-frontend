@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom"
 
 // ! Services
 import { create } from "../../../services/campsiteService"
+import ImageUpload from "../../../components/ImageUpload/ImageUpload";
 
 // ! Styles
 
 export default function AddCampsite(props) {
 
-    const [images, setImages] = useState('');
+
 
 
     const [formData, setFormData] = useState({
@@ -20,56 +21,21 @@ export default function AddCampsite(props) {
         showers: false,
         camperVans: false,
         description: '',
-        images: ''
+        images: []
     })
 
     const navigate = useNavigate()
 
-    // const handleFileChange = (e) => {
-    //     console.log(e.target.files[0])
-    //     setImages(e.target.files[0]);
-    // }
-
-
+ 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         await create(formData)
         props.setSites((e) => [...e, formData])
-
         navigate('/campsites')
     }
 
-    const handleFileChange = async (e) => {
-        // console.log(e.target.files);
-        // setImages(e.target.files[0])
-        // if (e.target.files && e.target.files[0]) {
-        //   const file = e.target.files[0];
-        //   setImages(URL.createObjectURL(file)); // Set image preview URL
-        //   setFormData({ ...formData, images: file }); // Store file itself in formData.images
-        try {
-            const imageUpload = new FormData()
-
-            imageUpload.append('file', e.target.files[0])
-
-            imageUpload.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET)
-
-            // TODO service function
-            const { data } = await axios.post(import.meta.env.VITE_CLOUDINARY_UPLOAD_URL, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-
-            setFormData({...formData, [fieldName]: data.secure_url})
-
-            // pass fieldname down as props (name of field in state)
-        } catch (error) {
-            console.log(error);
-        }
-
-    }
 
 
     const handleChange = (e) => {
@@ -106,7 +72,8 @@ export default function AddCampsite(props) {
                 <label htmlFor="description">Description</label>
                 <input type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
 
-                <input type='file' multiple onChange={handleFileChange} />
+                <label htmlFor="images">Images:</label>
+                <ImageUpload setFormData={setFormData} formData={formData} fieldName='images'/>
 
                 <button type="submit">Add Campsite</button>
             </form>
