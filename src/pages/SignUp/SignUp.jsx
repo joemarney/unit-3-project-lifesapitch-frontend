@@ -12,6 +12,7 @@ export default function SignUp(props) {
     email: '',
     password: "",
     confirmPassword: "",
+    campsiteOwner: false
   });
 
   const navigate = useNavigate();
@@ -51,6 +52,10 @@ export default function SignUp(props) {
           <div>
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} />
+          </div>
+          <div>
+          <label htmlFor="campsiteOwner">Are you an owner?</label>
+          <input type="checkbox" name="campsiteOwner" value={formData.isOwner} onChange={handleChange}></input>
           </div>
           <div>
             <button>Sign Up</button>

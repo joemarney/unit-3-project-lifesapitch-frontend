@@ -7,7 +7,7 @@ export default function SignIn(props) {
 
   const [formData, setFormData] = useState({
     username: "",
-    password: "",
+    password: ""
   });
 
   const handleSubmit = async (e) => {

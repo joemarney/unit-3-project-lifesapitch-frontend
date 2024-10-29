@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Campsites from "./pages/Campsites/ListCampsite/ListCampsite";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Checklist from "./pages/CheckList/Checklist";
+import ShowCampsite from "./pages/Campsites/ShowCampsite/ShowCampsite";
 
 // ! Utilities
 import { getUser, removeToken } from "./utilities/auth";
@@ -47,6 +48,7 @@ export default function App() {
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path='/checklist' element={<Checklist />} />
+        <Route path="/campsites/:campsiteId" element={<ShowCampsite />}/>
       </Routes>
     </main>
   );
