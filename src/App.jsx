@@ -9,6 +9,8 @@ import NavBar from "./components/NavBar/NavBar";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Campsites from "./pages/Campsites/ListCampsite/ListCampsite";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Checklist from "./pages/CheckList/Checklist";
 
 // ! Utilities
 import { getUser, removeToken } from "./utilities/auth";
@@ -43,6 +45,8 @@ export default function App() {
         <Route path="/campsites" element={<Campsites />} />
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path='/checklist' element={<Checklist />} />
       </Routes>
     </main>
   );

@@ -76,6 +76,12 @@ This app allows people to rate and review campsites they’ve been to, as well a
     2. Creating Controllers
     3. Setting Up the middleware JWT
     4. Setting Up routes
+ 5. After setting up the backend with Express, we moved onto the frontend with React
+    1. Very similar to the setup of the back end, we started this section by creating the necessary folders, files and boile plate for the code
+    2. We then decided to kick off the sign up / out / in components 
+    3. In turn we had to create the services, utilities and interceptors
+    4. We then got stuck on a sign out but in which we decided to come back to it after creating the simpler pages. We decided that we wanted to see progress after being stuck on the bug for a while
+    5. 
    
 ## Challenges
 We had problems with the `.compareSync()` function in the sign in route.
