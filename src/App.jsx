@@ -45,13 +45,13 @@ export default function App() {
         </>
       )}
       <Routes>
-        <Route path="/campsites" element={<Campsites user={user} />} />
+        <Route path="/" element={<Campsites user={user} />} />
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/checklist" element={<Checklist />} />
-        <Route path="/campsites/:campsiteId" element={<ShowCampsite campsite={campsite} setCampsite={setCampsite} user={user}/>} />
-        <Route path="/campsites/:campsiteId/edit" element={<UpdateCampsite campsite={campsite} setCampsite={setCampsite} user={user} />} />
+        <Route path="/:campsiteId" element={<ShowCampsite campsite={campsite} setCampsite={setCampsite} user={user}/>} />
+        <Route path="/:campsiteId/edit" element={<UpdateCampsite campsite={campsite} setCampsite={setCampsite} user={user} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
       </Routes>
     </main>

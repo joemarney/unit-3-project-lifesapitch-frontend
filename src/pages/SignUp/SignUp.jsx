@@ -27,7 +27,7 @@ export default function SignUp(props) {
     try {
       const { user } = await signup(formData);
       props.setUser(user);
-      navigate("/campsites");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
