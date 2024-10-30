@@ -10,7 +10,7 @@ import ImageUpload from "../../../components/ImageUpload/ImageUpload";
 export default function AddCampsite(props) {
 
 
-
+    const [imageUp, setImageUp] = useState(false)
 
     const [formData, setFormData] = useState({
         title: '',
@@ -26,13 +26,13 @@ export default function AddCampsite(props) {
 
     const navigate = useNavigate()
 
- 
+
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await create(formData)
-        props.setSites((e) => [...e, formData])
+        const {data} = await create(formData)
+        props.setSites((e) => [...e, data])
         navigate('/campsites')
     }
 
@@ -73,9 +73,9 @@ export default function AddCampsite(props) {
                 <input type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
 
                 <label htmlFor="images">Images:</label>
-                <ImageUpload setFormData={setFormData} formData={formData} fieldName='images'/>
+                <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName='images' />
 
-                <button type="submit">Add Campsite</button>
+                <button type="submit" disabled={imageUp}>Add Campsite</button>
             </form>
 
 
