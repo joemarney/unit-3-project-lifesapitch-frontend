@@ -14,12 +14,14 @@ import Checklist from "./pages/CheckList/Checklist";
 import ShowCampsite from "./pages/Campsites/ShowCampsite/ShowCampsite";
 import AddCampsite from "./pages/Campsites/AddCampsite/AddCampsite";
 import ProfilePage from "./pages/Profile/Profile";
+import UpdateCampsite from "./pages/Campsites/UpdateCampsite/UpdateCampsite";
 
 // ! Utilities
 import { getUser, removeToken } from "./utilities/auth";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [campsite, setCampsite] = useState({});
 
   const navigate = useNavigate();
 
@@ -49,7 +51,8 @@ export default function App() {
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/checklist" element={<Checklist />} />
-        <Route path="/campsites/:campsiteId" element={<ShowCampsite />} />
+        <Route path="/campsites/:campsiteId" element={<ShowCampsite campsite={campsite} setCampsite={setCampsite} />} />
+        <Route path="/campsites/:campsiteId/edit" element={<UpdateCampsite campsite={campsite} setCampsite={setCampsite} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
       </Routes>
     </main>

@@ -2,51 +2,63 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { show, deleteCampsite } from "../../../services/campsiteService";
 
-export default function ShowCampsite() {
-  const [campsite, setCampsite] = useState({});
+export default function ShowCampsite(props) {
 
-  const { campsiteId } = useParams();
-  const navigate = useNavigate();
 
-  const fetchCampsite = async () => {
-    try {
-      const { data } = await show(campsiteId);
-      setCampsite(data);
-    } catch (error) {
-      console.log(error);
+    //! State
+    // const [campsite, setCampsite] = useState({});
+
+
+    //! Variables
+    const { campsiteId } = useParams();
+    const navigate = useNavigate();
+
+    const fetchCampsite = async () => {
+        try {
+            const { data } = await show(campsiteId);
+            props.setCampsite(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchCampsite();
+    }, []);
+
+    const handleDeleteCampsite = async () => {
+        try {
+            await deleteCampsite(campsiteId);
+            navigate("/campsites");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleUpdateCampsite = () => {
+        navigate(`/campsites/${campsiteId}/edit`)
     }
-  };
 
-  useEffect(() => {
-    fetchCampsite();
-  }, []);
 
-  const handleDeleteCampsite = async () => {
-    try {
-      await deleteCampsite(campsiteId);
-      navigate("/campsites");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  return (
-    <main>
-      <section>
-        <h1>{campsite.title}</h1>
-        <img src={campsite.images} />
-        <p>£{campsite.cost} pp.pn</p>
-        <p>{campsite.description}</p>
-        <p>{campsite.location}</p>
-        <h3>Amenities:</h3>
-        <p>Fires: {campsite.fires === true ? "yes" : "no"}</p>
-        <p>Toilets: {campsite.toilets === true ? "yes" : "no"}</p>
-        <p>Showers: {campsite.showers === true ? "yes" : "no"}</p>
-        <p>Camper Vans: {campsite.camperVans === true ? "yes" : "no"}</p>
-      </section>
-      <button onClick={handleDeleteCampsite}>Delete {campsite.title}</button>
-    </main>
-  );
+    return (
+        <main>
+            <section>
+                <h1>{props.campsite.title}</h1>
+                <img src={props.campsite.images} />
+                <p>£{props.campsite.cost} pp.pn</p>
+                <p>{props.campsite.description}</p>
+                <p>{props.campsite.location}</p>
+                <h3>Amenities:</h3>
+                <p>Fires: {props.campsite.fires === true ? "yes" : "no"}</p>
+                <p>Toilets: {props.campsite.toilets === true ? "yes" : "no"}</p>
+                <p>Showers: {props.campsite.showers === true ? "yes" : "no"}</p>
+                <p>Camper Vans: {props.campsite.camperVans === true ? "yes" : "no"}</p>
+            </section>
+            <button onClick={handleDeleteCampsite}>Delete {props.campsite.title}</button>
+            <button onClick={handleUpdateCampsite}>Edit {props.campsite.title}</button>
+        </main>
+    );
 }
 
 // {campsite.images ?
