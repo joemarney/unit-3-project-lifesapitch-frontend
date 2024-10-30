@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-
+import styles from '../NavBar/NavBar.module.sass'
 // ! Images
 
 // ! Styles
 
 export default function NavBar(props) {
   return (
-    <>
+    <main className={styles.container}>
       {props.user ? (
         <ul>
             <li><Link to="/profile">Profile</Link></li>
@@ -25,6 +25,6 @@ export default function NavBar(props) {
           <li><Link to="/secret">Secret</Link></li>
         </ul>
       )}
-    </>
+    </main>
   );
 }
