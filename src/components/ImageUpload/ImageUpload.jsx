@@ -3,6 +3,7 @@ import { imageUpload } from '../../services/imageUpload'
 export default function ImageUpload(props) {
 
     async function handleImage(event) {
+        props.setImageUp(true)
         try {
             const files = event.target.files
 
@@ -15,6 +16,7 @@ export default function ImageUpload(props) {
             }
 
             props.setFormData({...props.formData, [props.fieldName]: images})
+            props.setImageUp(false)
         } catch (error) {
             console.log(error);
             console.log('Handle Image isnt working')
