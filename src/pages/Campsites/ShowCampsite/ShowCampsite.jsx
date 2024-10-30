@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { show, deleteCampsite } from "../../../services/campsiteService";
 import mapboxgl from "mapbox-gl";
 
+// ! Components
+import Loading from "../../../components/Loading/Loading";
+
 export default function ShowCampsite(props) {
   //! State
   const [campsite, setCampsite] = useState(null);
@@ -59,7 +62,7 @@ export default function ShowCampsite(props) {
   const handleUpdateCampsite = () => {
     navigate(`/${campsiteId}/edit`);
   };
-  if (!campsite) return <p>loading...</p>;
+  if (!campsite) return <Loading />;
   return (
     <main>
       <section>
