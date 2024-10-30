@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 // ! Services
 import { index } from "../../../services/campsiteService";
-import { signin } from "../../../services/userService";
-// import users from "../../../../../Backend-LAP/database/data/users";
-// import { user } from "../../../services/userService";
+
 // ! Pages
 import AddCampsite from "../AddCampsite/AddCampsite";
 
@@ -17,7 +15,7 @@ import styles from "./ListCampsite.module.scss";
 
 export default function ListCampsite({user}) {
     const [sites, setSites] = useState([]);
-    const [isOwner, setIsOwner] = useState(false);
+
 
 
     useEffect(() => {
