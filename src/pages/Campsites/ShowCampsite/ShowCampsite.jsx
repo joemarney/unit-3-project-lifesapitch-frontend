@@ -61,8 +61,3 @@ export default function ShowCampsite(props) {
     );
 }
 
-// {campsite.images ?
-//     <img src={campsite.images} alt="Image of a campsite"/>
-//     :
-//      <h5>no image of Campsite</h5>
-//      }
