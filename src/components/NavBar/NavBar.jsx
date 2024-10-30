@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from '../NavBar/NavBar.module.sass'
+import styles from '../NavBar/NavBar.module.scss'
 // ! Images
 
 // ! Styles
 
-import  "./Navbar.module.sass";
 
 
 export default function NavBar(props) {
