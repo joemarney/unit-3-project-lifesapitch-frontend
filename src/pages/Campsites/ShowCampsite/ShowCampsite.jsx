@@ -29,6 +29,7 @@ export default function ShowCampsite(props) {
     }
   }, [campsite]);
 
+
   useEffect(() => {
     if (campsite) {
       new mapboxgl.Marker().setLngLat(campsite.coords).addTo(mapRef.current);
@@ -41,8 +42,38 @@ export default function ShowCampsite(props) {
       setCampsite(data);
     } catch (error) {
       console.log(error);
+
+    //! Variables
+    const { campsiteId } = useParams();
+    const navigate = useNavigate();
+
+    const fetchCampsite = async () => {
+        try {
+            const { data } = await show(campsiteId);
+            props.setCampsite(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchCampsite();
+    }, []);
+
+    const handleDeleteCampsite = async () => {
+        try {
+            await deleteCampsite(campsiteId);
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleUpdateCampsite = () => {
+        navigate(`/${campsiteId}/edit`)
     }
   };
+
 
   useEffect(() => {
     fetchCampsite();
@@ -61,33 +92,31 @@ export default function ShowCampsite(props) {
     navigate(`/campsites/${campsiteId}/edit`);
   };
   if (!campsite) return <p>loading...</p>;
-  return (
-    <main>
-      <section>
-        <h1>{campsite.title}</h1>
-        <img src={campsite.images} />
-        <p>£{campsite.cost} pp.pn</p>
-        <p>{campsite.location}</p>
-        <div id="map-container" ref={mapContainerRef} />
-        <p>{campsite.description}</p>
-        <h3>Amenities:</h3>
-        <p>Fires: {campsite.fires === true ? "yes" : "no"}</p>
-        <p>Toilets: {campsite.toilets === true ? "yes" : "no"}</p>
-        <p>Showers: {campsite.showers === true ? "yes" : "no"}</p>
-        <p>Camper Vans: {campsite.camperVans === true ? "yes" : "no"}</p>
-      </section>
-      {props.user.campsiteOwner && (
-        <>
-          <button onClick={handleDeleteCampsite}>Delete {campsite.title}</button>
-          <button onClick={handleUpdateCampsite}>Edit {campsite.title}</button>
-        </>
-      )}
-    </main>
-  );
+    return (
+        <main>
+            <section>
+                <h1>{props.campsite.title}</h1>
+                <img src={props.campsite.images} />
+                <p>£{props.campsite.cost} pp.pn</p>
+                <p>{props.campsite.location}</p>
+                <p>{props.campsite.description}</p>
+                <h3>Amenities:</h3>
+                <p>Fires: {props.campsite.fires === true ? "yes" : "no"}</p>
+                <p>Toilets: {props.campsite.toilets === true ? "yes" : "no"}</p>
+                <p>Showers: {props.campsite.showers === true ? "yes" : "no"}</p>
+                <p>Camper Vans: {props.campsite.camperVans === true ? "yes" : "no"}</p>
+            </section>
+            {props.user ?
+                (props.user._id === props.campsite.campsiteOwner ?
+                    <>
+                        <button onClick={handleDeleteCampsite}>Delete {props.campsite.title}</button>
+                        <button onClick={handleUpdateCampsite}>Edit {props.campsite.title}</button>
+                    </>
+                    :
+                    (null))
+                : (null)
+            }
+        </main>
+    );
 }
 
-// {campsite.images ?
-//     <img src={campsite.images} alt="Image of a campsite"/>
-//     :
-//      <h5>no image of Campsite</h5>
-//      }
