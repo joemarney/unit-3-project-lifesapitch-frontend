@@ -48,7 +48,7 @@ export default function UpdateCampsite() {
         e.preventDefault()
         try {
             const { data } = await update(campsiteId, formData)
-            navigate(`/campsites/${data._id}`)
+            navigate(`/${data._id}`)
         } catch (error) {
             console.log(error);
             setErrors(error.response.data)

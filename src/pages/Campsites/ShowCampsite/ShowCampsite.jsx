@@ -29,14 +29,14 @@ export default function ShowCampsite(props) {
     const handleDeleteCampsite = async () => {
         try {
             await deleteCampsite(campsiteId);
-            navigate("/campsites");
+            navigate("/");
         } catch (error) {
             console.log(error);
         }
     };
 
     const handleUpdateCampsite = () => {
-        navigate(`/campsites/${campsiteId}/edit`)
+        navigate(`/${campsiteId}/edit`)
     }
 
     return (

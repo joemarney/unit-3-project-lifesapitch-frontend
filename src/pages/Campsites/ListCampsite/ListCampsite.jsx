@@ -51,7 +51,7 @@ export default function ListCampsite({user}) {
             <main className={styles.container}>
                 {sites.map((site) => {
                     return (
-                        <Link key={site._id} to={`/campsites/${site._id}`}>
+                        <Link key={site._id} to={`/${site._id}`}>
                             <article>
                                 <header>
                                     <h2>{site.title}</h2>
