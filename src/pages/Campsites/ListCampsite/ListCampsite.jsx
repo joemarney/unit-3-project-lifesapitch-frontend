@@ -15,7 +15,7 @@ import styles from "./ListCampsite.module.scss";
 
 
 
-export default function ListCampsite() {
+export default function ListCampsite({user}) {
     const [sites, setSites] = useState([]);
     const [isOwner, setIsOwner] = useState(false);
 
@@ -33,22 +33,13 @@ export default function ListCampsite() {
     }, [setSites]);
 
 
-    useEffect(() => {
-        const checkOwner = async () => {
-            const { data: user } = await 
-
-            setIsOwner(user.campsiteOwner || false)
-        }
-        checkOwner()
-    }, [])
-
 
 
 
     return (
         <>
             <h1>Welcome to the Campsites</h1>
-            {isOwner ? <AddCampsite setSites={setSites} /> : <h5>You need to be a campsite Owner to add new campsites</h5>}
+            {user.campsiteOwner ? <AddCampsite setSites={setSites} /> : <h5>You need to be a campsite Owner to add new campsites</h5>}
 
             <h3>Here you will find all of the campsites around the UK!</h3>
 
