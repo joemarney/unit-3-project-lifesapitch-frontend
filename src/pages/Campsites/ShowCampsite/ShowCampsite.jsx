@@ -39,8 +39,6 @@ export default function ShowCampsite(props) {
         navigate(`/campsites/${campsiteId}/edit`)
     }
 
-
-
     return (
         <main>
             <section>
@@ -55,8 +53,16 @@ export default function ShowCampsite(props) {
                 <p>Showers: {props.campsite.showers === true ? "yes" : "no"}</p>
                 <p>Camper Vans: {props.campsite.camperVans === true ? "yes" : "no"}</p>
             </section>
-            <button onClick={handleDeleteCampsite}>Delete {props.campsite.title}</button>
-            <button onClick={handleUpdateCampsite}>Edit {props.campsite.title}</button>
+            {props.user ?
+                (props.user._id === props.campsite.campsiteOwner ?
+                    <>
+                        <button onClick={handleDeleteCampsite}>Delete {props.campsite.title}</button>
+                        <button onClick={handleUpdateCampsite}>Edit {props.campsite.title}</button>
+                    </>
+                    :
+                    (null))
+                : (null)
+            }
         </main>
     );
 }
