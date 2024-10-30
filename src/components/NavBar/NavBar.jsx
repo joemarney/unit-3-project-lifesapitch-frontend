@@ -4,6 +4,9 @@ import styles from '../NavBar/NavBar.module.sass'
 
 // ! Styles
 
+import  "./Navbar.module.sass";
+
+
 export default function NavBar(props) {
   return (
     <main className={styles.container}>
