@@ -49,8 +49,8 @@ export default function App() {
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/checklist" element={<Checklist />} />
-        <Route path="/:campsiteId" element={<ShowCampsite campsite={campsite} setCampsite={setCampsite} user={user}/>} />
-        <Route path="/:campsiteId/edit" element={<UpdateCampsite campsite={campsite} setCampsite={setCampsite} user={user} />} />
+        <Route path="/:campsiteId" element={<ShowCampsite user={user} />} />
+        <Route path="/:campsiteId/edit" element={<UpdateCampsite user={user} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
       </Routes>
     </main>
