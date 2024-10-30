@@ -12,7 +12,6 @@ import Campsites from "./pages/Campsites/ListCampsite/ListCampsite";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Checklist from "./pages/CheckList/Checklist";
 import ShowCampsite from "./pages/Campsites/ShowCampsite/ShowCampsite";
-import AddCampsite from "./pages/Campsites/AddCampsite/AddCampsite";
 import ProfilePage from "./pages/Profile/Profile";
 import UpdateCampsite from "./pages/Campsites/UpdateCampsite/UpdateCampsite";
 
