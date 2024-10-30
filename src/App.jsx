@@ -13,6 +13,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Checklist from "./pages/CheckList/Checklist";
 import ShowCampsite from "./pages/Campsites/ShowCampsite/ShowCampsite";
 import AddCampsite from "./pages/Campsites/AddCampsite/AddCampsite";
+import ProfilePage from "./pages/Profile/Profile";
 
 // ! Utilities
 import { getUser, removeToken } from "./utilities/auth";
@@ -49,7 +50,7 @@ export default function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/checklist" element={<Checklist />} />
         <Route path="/campsites/:campsiteId" element={<ShowCampsite />} />
-        <Route path="/campsites/new" element={<AddCampsite />} />
+        <Route path="/profile" element={<ProfilePage user={user} />} />
       </Routes>
     </main>
   );
