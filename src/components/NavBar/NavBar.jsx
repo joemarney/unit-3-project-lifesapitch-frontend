@@ -9,24 +9,20 @@ export default function NavBar(props) {
     <>
       {props.user ? (
         <ul>
-          <li>
-            <Link to="/profile">Profile</Link>
-            <Link to="/">Campsites</Link>
-            <Link to="/checklist">Checklist</Link>
-            <Link to="/aboutus">About Us</Link>
-            <Link to="/signout">Sign Out</Link>
-            <Link to="/secret">Secret</Link>
-          </li>
+            <li><Link to="/profile">Profile</Link></li>
+            <li><Link to="/campsites">Campsites</Link></li>
+            <li><Link to="/checklist">Checklist</Link></li>
+            <li><Link to="/aboutus">About Us</Link></li>
+            <li><Link to="" onClick={props.handleSignOut}>Sign Out</Link></li>
+            <li><Link to="/secret">Secret</Link></li>
         </ul>
       ) : (
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-            <Link to="/signin">Sign In</Link>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/aboutus">About Us</Link>
-            <Link to="/secret">Secret</Link>
-          </li>
+          <li><Link to="/campsites">Campsites</Link></li>
+          <li><Link to="/signin">Sign In</Link></li>
+          <li><Link to="/signup">Sign Up</Link></li>
+          <li><Link to="/aboutus">About Us</Link></li>
+          <li><Link to="/secret">Secret</Link></li>
         </ul>
       )}
     </>

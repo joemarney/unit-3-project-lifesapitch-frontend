@@ -9,8 +9,10 @@ import { signup } from "../../services/userService";
 export default function SignUp(props) {
   const [formData, setFormData] = useState({
     username: "",
+    email: '',
     password: "",
     confirmPassword: "",
+    campsiteOwner: false
   });
 
   const navigate = useNavigate();
@@ -40,12 +42,20 @@ export default function SignUp(props) {
             <input type="text" name="username" placeholder="John Doe" value={formData.username} onChange={handleChange} />
           </div>
           <div>
+            <label htmlFor='email'>Email:</label>
+            <input type='email' name='email' placeholder='johndoe@gmail.com' value={formData.email} onChange={handleChange} />
+          </div>
+          <div>
             <label htmlFor="password">Password:</label>
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
           </div>
           <div>
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} />
+          </div>
+          <div>
+          <label htmlFor="campsiteOwner">Are you an owner?</label>
+          <input type="checkbox" name="campsiteOwner" value={formData.isOwner} onChange={handleChange}></input>
           </div>
           <div>
             <button>Sign Up</button>
