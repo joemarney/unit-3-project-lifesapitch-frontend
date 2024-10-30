@@ -11,7 +11,7 @@ import AddCampsite from '../AddCampsite/AddCampsite';
 // ! Styles
 import styles from './ListCampsite.module.scss'
 
-export default function ListCampsite() {
+export default function ListCampsite({user}) {
 
     const [sites, setSites] = useState([])
 
@@ -31,8 +31,11 @@ export default function ListCampsite() {
     return (
         <main className={styles.container}>
             <h1>Welcome to the Campsites</h1>
-
+            {user ?
             <AddCampsite setSites={setSites} />
+            :
+            <h5>You need to be a campsite Owner to add new campsites</h5>
+        }
 
 
             <h3>Here you will find all of the campsites around the UK!</h3>

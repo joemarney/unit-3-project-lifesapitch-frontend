@@ -44,7 +44,7 @@ export default function App() {
     </>
     }
       <Routes>
-        <Route path="/campsites" element={<Campsites />} />
+        <Route path="/campsites" element={<Campsites user={user}/>} />
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/aboutus" element={<AboutUs />} />
