@@ -20,7 +20,6 @@ import { getUser, removeToken } from "./utilities/auth";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [campsite, setCampsite] = useState({});
 
   const navigate = useNavigate();
 
@@ -50,8 +49,8 @@ export default function App() {
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/checklist" element={<Checklist />} />
-        <Route path="/campsites/:campsiteId" element={<ShowCampsite campsite={campsite} setCampsite={setCampsite} />} />
-        <Route path="/campsites/:campsiteId/edit" element={<UpdateCampsite campsite={campsite} setCampsite={setCampsite} />} />
+        <Route path="/campsites/:campsiteId" element={<ShowCampsite user={user} />} />
+        <Route path="/campsites/:campsiteId/edit" element={<UpdateCampsite />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
       </Routes>
     </main>
