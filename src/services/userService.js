@@ -22,3 +22,14 @@ export async function signin(formData) {
 
   return data;
 }
+
+
+// export async function user() {
+//   const { data } = await axios.get(`${BASE_URL}/user`);
+
+//   if (data.token) {
+//     setToken(data.token);
+//   }
+
+//   return data;
+// }

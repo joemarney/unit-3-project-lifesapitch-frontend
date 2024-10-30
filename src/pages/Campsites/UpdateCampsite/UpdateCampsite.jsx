@@ -13,7 +13,7 @@ import { show } from "../../../services/campsiteService";
 export default function UpdateCampsite() {
 
 
-const {campsiteId} = useParams()
+    const { campsiteId } = useParams()
 
     const [imageUp, setImageUp] = useState(false)
 
@@ -32,32 +32,33 @@ const {campsiteId} = useParams()
     const [errors, setErrors] = useState({})
 
     const navigate = useNavigate()
-useEffect(() => {
-    const fetchCampsite = async () => {
-        try {
-            const { data } = await show(campsiteId);
-            setFormData(data)
-        } catch (error) {
-            console.log(error);
+    useEffect(() => {
+        const fetchCampsite = async () => {
+            try {
+                const { data } = await show(campsiteId);
+                setFormData(data)
+            } catch (error) {
+                console.log(error);
+            }
         }
-    }
-    if(campsiteId) fetchCampsite()
+        if (campsiteId) fetchCampsite()
     }, [campsiteId])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const {data} = await update(campsiteId, formData)
-        navigate(`/campsites/${data._id}`)
+            const { data } = await update(campsiteId, formData)
+            navigate(`/campsites/${data._id}`)
         } catch (error) {
             console.log(error);
             setErrors(error.response.data)
         }
-        
+
     }
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+    function handleChange(event) {
+        const { name, type, checked, value } = event.target
+        setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
     }
 
     return (
@@ -74,17 +75,22 @@ useEffect(() => {
                 <label htmlFor="location">Location of Site</label>
                 <input type="text" name="location" placeholder="123, That Street" onChange={handleChange} value={formData.location} />
 
+                {/* //? ================================= Checkboxes =================================  //? */}
+
                 <label htmlFor='fires'>Fires</label>
-                <input type="checkbox" name="fires" value={formData.fires} />
+                <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
 
                 <label htmlFor='toilets'>Toilets</label>
-                <input type="checkbox" name="toilets" value={formData.toilets} />
+                <input type="checkbox" name="toilets" checked={formData.toilets} onChange={handleChange} />
 
                 <label htmlFor='showers'>Showers</label>
-                <input type="checkbox" name="showers" value={formData.showers} />
+                <input type="checkbox" name="showers" checked={formData.showers} onChange={handleChange} />
 
                 <label htmlFor='camperVans'>Camper Vans</label>
-                <input type="checkbox" name="camperVans" value={formData.camperVans} />
+                <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
+
+
+                {/* //? ================================= Checkboxes =================================  //? */}
 
                 <label htmlFor="description">Description</label>
                 <input type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
@@ -92,9 +98,7 @@ useEffect(() => {
                 <label htmlFor="images">Images:</label>
                 <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName='images' />
 
-                {errors.errorMessage && <p className="error">{errors.errorMessage}</p>}
-
-                <button type="submit" disabled={imageUp}>Edit Campsite</button>
+                <button type="submit" disabled={imageUp}>Confirm Edit</button>
             </form>
 
 

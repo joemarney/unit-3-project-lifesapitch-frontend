@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { show, deleteCampsite } from "../../../services/campsiteService";
 
 export default function ShowCampsite(props) {
@@ -47,8 +47,8 @@ export default function ShowCampsite(props) {
                 <h1>{props.campsite.title}</h1>
                 <img src={props.campsite.images} />
                 <p>£{props.campsite.cost} pp.pn</p>
-                <p>{props.campsite.description}</p>
                 <p>{props.campsite.location}</p>
+                <p>{props.campsite.description}</p>
                 <h3>Amenities:</h3>
                 <p>Fires: {props.campsite.fires === true ? "yes" : "no"}</p>
                 <p>Toilets: {props.campsite.toilets === true ? "yes" : "no"}</p>

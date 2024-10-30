@@ -1,52 +1,63 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 // ! Services
 import { index } from "../../../services/campsiteService";
-
+import { signin } from "../../../services/userService";
+// import users from "../../../../../Backend-LAP/database/data/users";
+// import { user } from "../../../services/userService";
 // ! Pages
 import AddCampsite from "../AddCampsite/AddCampsite";
 
 // ! Styles
 import styles from "./ListCampsite.module.scss";
 
-export default function ListCampsite({ user }) {
-  const [sites, setSites] = useState([]);
 
-  useEffect(() => {
-    const fetchSites = async () => {
-      try {
-        const { data } = await index();
-        setSites(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchSites();
-  }, [setSites]);
 
-  return (
-    <>
-      <h1>Welcome to the Campsites</h1>
-      {user ? <AddCampsite setSites={setSites} /> : <h5>You need to be a campsite Owner to add new campsites</h5>}
 
-      <h3>Here you will find all of the campsites around the UK!</h3>
+export default function ListCampsite({user}) {
+    const [sites, setSites] = useState([]);
+    const [isOwner, setIsOwner] = useState(false);
 
-      <main className={styles.container}>
-        {sites.map((site) => {
-          return (
-            <Link key={site._id} to={`/campsites/${site._id}`}>
-              <article>
-                <header>
-                  <h2>{site.title}</h2>
-                </header>
-                <p>{site.cost} pp.pn</p>
-                <p>{site.location}</p>
-              </article>
-            </Link>
-          );
-        })}
-      </main>
-    </>
-  );
+
+    useEffect(() => {
+        const fetchSites = async () => {
+            try {
+                const { data } = await index();
+                setSites(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchSites();
+    }, [setSites]);
+
+
+
+
+
+    return (
+        <>
+            <h1>Welcome to the Campsites</h1>
+            {user.campsiteOwner ? <AddCampsite setSites={setSites} /> : <h5>You need to be a campsite Owner to add new campsites</h5>}
+
+            <h3>Here you will find all of the campsites around the UK!</h3>
+
+            <main className={styles.container}>
+                {sites.map((site) => {
+                    return (
+                        <Link key={site._id} to={`/campsites/${site._id}`}>
+                            <article>
+                                <header>
+                                    <h2>{site.title}</h2>
+                                </header>
+                                <p>{site.cost} pp.pn</p>
+                                <p>{site.location}</p>
+                            </article>
+                        </Link>
+                    );
+                })}
+            </main>
+        </>
+    );
 }

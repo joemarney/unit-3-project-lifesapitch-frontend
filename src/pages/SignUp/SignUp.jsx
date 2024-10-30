@@ -18,7 +18,8 @@ export default function SignUp(props) {
   const navigate = useNavigate();
 
   function handleChange(event) {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    const {name, type, checked, value} = event.target
+    setFormData({ ...formData, [name]: type ==='checkbox' ? checked: value });
   }
 
   async function handleSubmit(event) {
@@ -55,12 +56,12 @@ export default function SignUp(props) {
           </div>
           <div>
           <label htmlFor="campsiteOwner">Are you an owner?</label>
-          <input type="checkbox" name="campsiteOwner" value={formData.isOwner} onChange={handleChange}></input>
+          <input type="checkbox" name="campsiteOwner" checked={formData.campsiteOwner} onChange={handleChange}></input>
           </div>
           <div>
-            <button>Sign Up</button>
+            <button type="submit">Sign Up</button>
             <Link to="/">
-              <button>Cancel</button>
+              <button type="button">Cancel</button>
             </Link>
           </div>
         </form>

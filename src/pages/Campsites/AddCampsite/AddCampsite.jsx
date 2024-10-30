@@ -31,15 +31,16 @@ export default function AddCampsite(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const {data} = await create(formData)
+        const { data } = await create(formData)
         props.setSites((e) => [...e, data])
         navigate('/campsites')
     }
 
 
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+    function handleChange(event) {
+        const { name, type, checked, value } = event.target
+        setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
     }
 
 
@@ -57,17 +58,22 @@ export default function AddCampsite(props) {
                 <label htmlFor="location">Location of Site</label>
                 <input type="text" name="location" placeholder="123, That Street" onChange={handleChange} value={formData.location} />
 
+                {/* //? ================================= Checkboxes =================================  //? */}
+
                 <label htmlFor='fires'>Fires</label>
-                <input type="checkbox" name="fires" value={formData.fires} />
+                <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange}/>
 
                 <label htmlFor='toilets'>Toilets</label>
-                <input type="checkbox" name="toilets" value={formData.toilets} />
+                <input type="checkbox" name="toilets" checked={formData.toilets} onChange={handleChange}/>
 
                 <label htmlFor='showers'>Showers</label>
-                <input type="checkbox" name="showers" value={formData.showers} />
+                <input type="checkbox" name="showers" checked={formData.showers} onChange={handleChange}/>
 
                 <label htmlFor='camperVans'>Camper Vans</label>
-                <input type="checkbox" name="camperVans" value={formData.camperVans} />
+                <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange}/>
+
+
+                {/* //? ================================= Checkboxes =================================  //? */}
 
                 <label htmlFor="description">Description</label>
                 <input type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
