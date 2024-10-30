@@ -1,13 +1,47 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { show, deleteCampsite } from "../../../services/campsiteService";
+import mapboxgl from "mapbox-gl";
 
 export default function ShowCampsite(props) {
+  //! State
+  const [campsite, setCampsite] = useState(null);
+
+  //! Variables
+  const { campsiteId } = useParams();
+  const navigate = useNavigate();
+  const mapRef = useRef();
+  const mapContainerRef = useRef();
+
+  // if !campsite return loaagin
+  useEffect(() => {
+    if (campsite) {
+      mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+      mapRef.current = new mapboxgl.Map({
+        container: mapContainerRef.current,
+        center: campsite.coords,
+        zoom: 9,
+      });
+
+      return () => {
+        mapRef.current.remove();
+      };
+    }
+  }, [campsite]);
 
 
-    //! State
-    // const [campsite, setCampsite] = useState({});
+  useEffect(() => {
+    if (campsite) {
+      new mapboxgl.Marker().setLngLat(campsite.coords).addTo(mapRef.current);
+    }
+  }, [campsite]);
 
+  const fetchCampsite = async () => {
+    try {
+      const { data } = await show(campsiteId);
+      setCampsite(data);
+    } catch (error) {
+      console.log(error);
 
     //! Variables
     const { campsiteId } = useParams();
@@ -38,7 +72,26 @@ export default function ShowCampsite(props) {
     const handleUpdateCampsite = () => {
         navigate(`/${campsiteId}/edit`)
     }
+  };
 
+
+  useEffect(() => {
+    fetchCampsite();
+  }, []);
+
+  const handleDeleteCampsite = async () => {
+    try {
+      await deleteCampsite(campsiteId);
+      navigate("/campsites");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdateCampsite = () => {
+    navigate(`/campsites/${campsiteId}/edit`);
+  };
+  if (!campsite) return <p>loading...</p>;
     return (
         <main>
             <section>

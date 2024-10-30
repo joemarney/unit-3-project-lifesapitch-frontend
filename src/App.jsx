@@ -20,7 +20,6 @@ import { getUser, removeToken } from "./utilities/auth";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [campsite, setCampsite] = useState({});
 
   const navigate = useNavigate();
 
