@@ -23,3 +23,7 @@ button, a {
   width: 100%;
   background-color: lightgray;
 }
+
+button:hover {
+  cursor: pointer;
+}

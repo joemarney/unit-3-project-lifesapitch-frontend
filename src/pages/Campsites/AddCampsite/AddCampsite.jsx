@@ -49,43 +49,46 @@ export default function AddCampsite(props) {
         {close => (
           <div>
             <div className={styles.container}>
+
               <div className={styles.Add}>
+                <button className={styles.close} onClick={() => close()}>X</button>
+
+                <h2> Provide Your Campsite Details</h2>
                 <form onSubmit={handleSubmit}>
-                  <label htmlFor="title">Name of Campsite</label>
-                  <input type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
+                  <label className={styles.title} htmlFor="title" >Name of Campsite</label>
+                  <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
 
-                  <label htmlFor="cost">£ Cost Per Night</label>
-                  <input type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
+                  <label className={styles.cost} htmlFor="cost">£ Cost Per Night</label>
+                  <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
 
-                  <label htmlFor="location">Location of Site</label>
-                  <input type="text" name="location" placeholder="123, That Street" onChange={handleChange} value={formData.location} />
-
-                  {/* //? ================================= Checkboxes =================================  //? */}
-
-                  <label htmlFor="fires">Fires</label>
-                  <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
-
-                  <label htmlFor="toilets">Toilets</label>
-                  <input type="checkbox" name="toilets" checked={formData.toilets} onChange={handleChange} />
-
-                  <label htmlFor="showers">Showers</label>
-                  <input type="checkbox" name="showers" checked={formData.showers} onChange={handleChange} />
-
-                  <label htmlFor="camperVans">Camper Vans</label>
-                  <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
+                  <label className={styles.location} htmlFor="location">Location of Site</label>
+                  <input className={styles.location} type="text" name="location" placeholder="123, That Street" onChange={handleChange} value={formData.location} />
 
                   {/* //? ================================= Checkboxes =================================  //? */}
+                  <div className={styles.checkbox} >
+                    <label htmlFor="fires">Fires</label>
+                    <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
 
-                  <label htmlFor="description">Description</label>
-                  <input type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
+                    <label htmlFor="toilets">Toilets</label>
+                    <input type="checkbox" name="toilets" checked={formData.toilets} onChange={handleChange} />
 
-                  <label htmlFor="images">Images:</label>
+                    <label htmlFor="showers">Showers</label>
+                    <input type="checkbox" name="showers" checked={formData.showers} onChange={handleChange} />
+
+                    <label htmlFor="camperVans">Camper Vans</label>
+                    <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
+                  </div>
+                  {/* //? ================================= Checkboxes =================================  //? */}
+
+                  <label className={styles.description} htmlFor="description">Description</label>
+                  <input className={styles.description} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
+
+                  <label className={styles.image} htmlFor="images">Images:</label>
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
 
-                  <button type="submit" disabled={imageUp}>
+                  <button className={styles.submit} type="submit" disabled={imageUp}>
                     Add Campsite
                   </button>
-            <button onClick={() => close()}>Cancel</button>
                 </form>
               </div>
             </div>

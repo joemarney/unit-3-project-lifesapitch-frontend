@@ -14,7 +14,7 @@ import styles from "./ListCampsite.module.scss";
 
 export default function ListCampsite({ user }) {
   const [sites, setSites] = useState([]);
-  const [isOpen, setIsOpen] = useState(false)
+
 
   useEffect(() => {
     const fetchSites = async () => {
@@ -30,21 +30,17 @@ export default function ListCampsite({ user }) {
 
 
 
-  const openLoginPopup = () => {
-    setIsOpen(true)
-    
-    }
-  const closeLoginPopup = () => setIsOpen(false);
+
 
 
 
   return (
     <>
+    <div className={styles.headers}>
       <h1>Life's a Pitch</h1>
-
-      {/* {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} /> : <h5>You need to be a campsite Owner to add new campsites</h5> : null} */}
-      
-      <AddCampsite setSites={setSites}/>
+      {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} /> : null : null}
+      </div>
+  
       
             
       <main className={styles.container}>

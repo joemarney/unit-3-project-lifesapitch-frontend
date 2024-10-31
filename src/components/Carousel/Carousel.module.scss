@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+
+    button {
+        background: transparent;
+        border: none;
+        i {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: block;
+            padding: 3px;
+          
+        }
+    }
+    i {
+      transform: rotate(-45deg);
+    }
+    
+    .left {
+      transform: rotate(135deg);
+    }
+}

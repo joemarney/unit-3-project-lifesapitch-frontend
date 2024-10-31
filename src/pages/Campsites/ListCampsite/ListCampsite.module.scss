@@ -1,3 +1,10 @@
+.headers{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -15,18 +22,26 @@
     padding: 14px 21px;
     border-radius: 5px;
     box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
-    text-align: center;
+    background-color: #B4C292;
+    transition: background-color 2s ease-out 100ms;
+    border: 1px solid black;
+  }
+
+    article:hover {
+      background-color: #5F634F;
+    }
+
+    article:active {
+      background-color: #D17A22;
+    }
 
     header {
       text-align: center;
       align-content: center;
-    h2 {
+      h2 {
       margin: 0;
+      }
     }
-    
-    }
-  }
-
 }
 
 

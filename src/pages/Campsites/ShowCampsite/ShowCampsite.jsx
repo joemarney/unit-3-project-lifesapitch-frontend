@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { show, deleteCampsite } from "../../../services/campsiteService";
 import mapboxgl from "mapbox-gl";
 
+// ! Styles
+import styles from './ShowCampsite.module.scss'
+
 // ! Components
 import Loading from "../../../components/Loading/Loading";
 import Carousel from "../../../components/Carousel/Carousel";
@@ -65,7 +68,7 @@ export default function ShowCampsite(props) {
 
   if (!campsite) return <Loading />;
   return (
-    <main>
+    <main className={styles.container}>
       <section>
         <h1>{campsite.title}</h1>
         <Carousel images={campsite.images} />
