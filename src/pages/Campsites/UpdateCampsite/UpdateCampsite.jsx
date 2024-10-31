@@ -82,7 +82,7 @@ export default function UpdateCampsite() {
             <div className={styles.container}>
               <div className={styles.Add}>
                 <button className={styles.close} onClick={() => close()}>
-                  X
+                  Ｘ
                 </button>
 
                 <form onSubmit={handleSubmit}>
