@@ -72,13 +72,15 @@ export default function ShowCampsite(props) {
       <section>
         <h1>{campsite.title}</h1>
         <Carousel images={campsite.images} />
-        <p>£{campsite.cost} pp.pn</p>
         <p>{campsite.description}</p>
+        <p>£{campsite.cost} pp.pn</p>
         <h3>Amenities:</h3>
+        <div className={styles.amenities}>
         <p>Fires: {campsite.fires === true ? "yes" : "no"}</p>
         <p>Toilets: {campsite.toilets === true ? "yes" : "no"}</p>
         <p>Showers: {campsite.showers === true ? "yes" : "no"}</p>
         <p>Camper Vans: {campsite.camperVans === true ? "yes" : "no"}</p>
+        </div>
         <p>{campsite.location}</p>
         <div id="map-container" ref={mapContainerRef} />
       </section>

@@ -81,9 +81,9 @@ export default function AddCampsite(props) {
                   {/* //? ================================= Checkboxes =================================  //? */}
 
                   <label className={styles.description} htmlFor="description">Description</label>
-                  <input className={styles.description} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
+                  <textarea className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
 
-                  <label className={styles.image} htmlFor="images">Images:</label>
+                  <label htmlFor="images">Images:</label>
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
 
                   <button className={styles.submit} type="submit" disabled={imageUp}>

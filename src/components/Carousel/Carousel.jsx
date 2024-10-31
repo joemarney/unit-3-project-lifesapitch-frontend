@@ -16,9 +16,9 @@ export default function Carousel(props) {
 
   return (
     <div className={styles.container}>
-      <button onClick={prevSlide}><i className="left"></i></button>
+      <button onClick={prevSlide}><em></em></button>
       <img src={props.images[activeIdx]} alt={`Slide ${activeIdx}`} />
-      <button onClick={nextSlide}><i className="right"></i></button>
+      <button onClick={nextSlide}><i></i></button>
     </div>
   );
 }
