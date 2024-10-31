@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Popup from "reactjs-popup";
-
+import { SearchBox } from "@mapbox/search-js-react";
 
 // ! Services
 import { create } from "../../../services/campsiteService";
@@ -9,6 +9,7 @@ import ImageUpload from "../../../components/ImageUpload/ImageUpload";
 
 // ! Styles
 import styles from "./AddCampsite.module.scss";
+
 
 let thing = {
   title: "",
@@ -32,6 +33,7 @@ export default function AddCampsite(props) {
     thing
   );
 
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e, close) => {
@@ -48,31 +50,54 @@ export default function AddCampsite(props) {
     setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   }
 
+  function handleRetrieve(location) {
+    const { geometry, properties } = location.features[0];
+
+    setFormData({
+      ...formData,
+      title: properties.name,
+      location: properties.full_address,
+      coords: geometry.coordinates,
+    });
+  }
 
 
   return (
     <>
       <Popup trigger={<button> Click to Add Campsite </button>} modal nested>
-        {close => (
+        {(close) => (
           <div>
             <div className={styles.container}>
-
               <div className={styles.Add}>
-                <button className={styles.close} onClick={() => close()}>X</button>
+                <button className={styles.close} onClick={() => close()}>
+                  X
+                </button>
 
                 <h2> Provide Your Campsite Details</h2>
+
                 <form onSubmit={(e) => handleSubmit(e, close)}>
                   <label className={styles.title} htmlFor="title" >Name of Campsite</label>
+
                   <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
 
-                  <label className={styles.cost} htmlFor="cost">£ Cost Per Night</label>
+                  <label className={styles.cost} htmlFor="cost">
+                    £ Cost Per Night
+                  </label>
                   <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
 
-                  <label className={styles.location} htmlFor="location">Location of Site</label>
-                  <input className={styles.location} type="text" name="location" placeholder="123, That Street" onChange={handleChange} value={formData.location} />
+                  <label className={styles.location} htmlFor="location">
+                    Location of Site
+                  </label>
+                  <SearchBox
+                    accessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+                    options={{
+                      language: "en",
+                      country: "GB",
+                    }}
+                    onRetrieve={handleRetrieve}
+                  />
 
-                  {/* //? ================================= Checkboxes =================================  //? */}
-                  <div className={styles.checkbox} >
+                  <div className={styles.checkbox}>
                     <div className={styles.fires}>
 
                       <label htmlFor="fires">Fires</label>
@@ -93,17 +118,17 @@ export default function AddCampsite(props) {
                       <label htmlFor="camperVans">Campers</label>
                       <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
                     </div>
-
                   </div>
-                  {/* //? ================================= Checkboxes =================================  //? */}
 
-                  <label className={styles.description} htmlFor="description">Description</label>
+                  <label className={styles.description} htmlFor="description">
+                    Description
+                  </label>
                   <textarea className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
 
                   <label htmlFor="images">Images:</label>
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
 
-                  <button className={styles.submit} type="submit" disabled={imageUp}>
+                  <button className={styles.submit} type="submit" disabled={imageUp || formData.coords.length === 0}>
                     Add Campsite
                   </button>
                 </form>
@@ -111,7 +136,6 @@ export default function AddCampsite(props) {
             </div>
           </div>
         )}
-
       </Popup>
     </>
   );

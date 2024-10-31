@@ -2,18 +2,26 @@
   box-sizing: border-box;
 }
 
-html, body {
-    background: antiquewhite;
-    
+html,
+body {
+  background: antiquewhite;
 }
 
-button, a {
-    text-decoration: none;
-    color: black;
+button {
+  text-decoration: none;
+  color: black;
+  background-color: orange;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .error {
-    color: red;
+  color: red;
 }
 
 //global mapbox styles
