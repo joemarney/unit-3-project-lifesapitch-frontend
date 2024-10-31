@@ -6,11 +6,6 @@ import mapboxgl from "mapbox-gl";
 // ! Styles
 import styles from './ShowCampsite.module.scss'
 
-// ! Images
-import no from '/src/assets/images/no.ico'
-import yes from '/src/assets/images/yes.ico'
-
-
 // ! Components
 import Loading from "../../../components/Loading/Loading";
 import Carousel from "../../../components/Carousel/Carousel";
@@ -81,22 +76,22 @@ export default function ShowCampsite(props) {
         <p>£{campsite.cost} pp.pn</p>
         <h3>Amenities:</h3>
         <div className={styles.amenities}>
-        <p>Fires: {campsite.fires === true ? <img src={yes}alt='yes'/> : <img src={no} alt='no'/>}</p>
+        <p>Fires: {campsite.fires === true ? 'yes' : 'no'}</p>
         <p>Toilets: {campsite.toilets === true ? "yes" : "no"}</p>
-        <p>Showers: {campsite.showers === true ? "yes" : <img src={no} alt='no'/>}</p>
+        <p>Showers: {campsite.showers === true ? "yes" : 'no'}</p>
         <p>Camper Vans: {campsite.camperVans === true ? "yes" : "no"}</p>
         </div>
         <p>{campsite.location}</p>
         <div id="map-container" ref={mapContainerRef} />
-      </section>
       {props.user ? (
         props.user._id === campsite.campsiteOwner ? (
-          <>
+          <div className={styles.buttonContainer}>
             <button onClick={handleDeleteCampsite}>Delete {campsite.title}</button>
             <button onClick={handleUpdateCampsite}>Edit {campsite.title}</button>
-          </>
+          </div>
         ) : null
       ) : null}
+      </section>
     </main>
   );
 }

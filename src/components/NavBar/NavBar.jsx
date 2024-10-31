@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import styles from '../NavBar/NavBar.module.scss'
+
 // ! Images
 
 // ! Styles
+import styles from '../NavBar/NavBar.module.scss'
+import DesktopNav from "./DesktopNav";
 
 
 
@@ -10,6 +12,15 @@ export default function NavBar(props) {
   return (
     <main className={styles.container}>
       {props.user ? (
+
+        
+
+
+
+
+
+
+
         <ul>
             <li><Link to="/profile">Profile</Link></li>
             <li><Link to="/">Campsites</Link></li>

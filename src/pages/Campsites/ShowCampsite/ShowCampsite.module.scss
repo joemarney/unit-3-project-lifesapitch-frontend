@@ -7,11 +7,20 @@
         text-align: center;
     }
 }
-// .amenities {
-//     display: flex;
-//     flex-direction: row;
-//     p {
-//         padding: 5px;
-//         text-align: center;
-//     }
-// }
+.amenities {
+    display: flex;
+    flex-direction: row;
+    p {
+        padding: 5px;
+        text-align: center;
+    }
+}
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+        width: 45%;
+        margin: 5px;
+    }
+}
