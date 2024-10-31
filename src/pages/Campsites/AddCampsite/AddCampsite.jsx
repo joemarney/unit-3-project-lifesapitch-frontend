@@ -16,6 +16,7 @@ import styles from "./AddCampsite.module.scss";
 export default function AddCampsite(props) {
   const [imageUp, setImageUp] = useState(false);
 
+
   const [formData, setFormData] = useState({
     title: "",
     cost: "",
@@ -30,17 +31,19 @@ export default function AddCampsite(props) {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, close) => {
     e.preventDefault();
     const { data } = await create(formData);
     props.setSites((e) => [...e, data]);
     navigate("/");
+    close()
   };
 
   function handleChange(event) {
     const { name, type, checked, value } = event.target;
     setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   }
+
 
 
   return (
@@ -54,7 +57,7 @@ export default function AddCampsite(props) {
                 <button className={styles.close} onClick={() => close()}>X</button>
 
                 <h2> Provide Your Campsite Details</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => handleSubmit(e,close)}>
                   <label className={styles.title} htmlFor="title" >Name of Campsite</label>
                   <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
 

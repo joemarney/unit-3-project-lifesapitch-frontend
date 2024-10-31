@@ -14,6 +14,7 @@ import styles from "./ListCampsite.module.scss";
 
 export default function ListCampsite({ user }) {
   const [sites, setSites] = useState([]);
+  const [isClosed, setIsClosed] = useState(true)
 
 
   useEffect(() => {
@@ -29,16 +30,19 @@ export default function ListCampsite({ user }) {
   }, [setSites]);
 
 
-
+  const handleClick = async () => {
+    await setIsClosed(false)
+    setIsClosed(true)
+  }
 
 
 
 
   return (
-    <>
+    <> 
     <div className={styles.headers}>
       <h1>Life's a Pitch</h1>
-      {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} /> : null : null}
+      {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} handleClick={handleClick}/> : null : null}
       </div>
   
       
