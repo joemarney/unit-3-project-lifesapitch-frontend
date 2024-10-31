@@ -13,7 +13,7 @@ import { show } from "../../../services/campsiteService";
 // ! Styles
 import styles from "./UpdateCampsite.module.scss";
 
-export default function UpdateCampsite(props) {
+export default function UpdateCampsite() {
   const { campsiteId } = useParams();
 
   const [imageUp, setImageUp] = useState(false);
@@ -76,7 +76,7 @@ export default function UpdateCampsite(props) {
 
   return (
     <>
-      <Popup trigger={<button> Edit {props.title} </button>} modal nested>
+      <Popup trigger={<button> Edit </button>} modal nested>
         {(close) => (
           <div>
             <div className={styles.container}>

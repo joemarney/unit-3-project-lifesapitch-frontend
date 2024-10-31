@@ -86,8 +86,8 @@ export default function ShowCampsite(props) {
         {props.user ? (
           props.user._id === campsite.campsiteOwner ? (
             <div className={styles.buttonContainer}>
-              <button onClick={handleDeleteCampsite}>Delete {campsite.title}</button>
-              <UpdateCampsite title={campsite.title} />
+              <button onClick={handleDeleteCampsite}>Delete</button>
+              <UpdateCampsite />
             </div>
           ) : null
         ) : null}
