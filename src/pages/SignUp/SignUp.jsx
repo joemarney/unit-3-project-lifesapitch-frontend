@@ -66,7 +66,7 @@ export default function SignUp(props) {
             <br></br>
             <input type="checkbox" name="campsiteOwner" checked={formData.campsiteOwner} onChange={handleChange}></input>
           </div>
-          <div>
+          <div className={styles.buttonContainer}>
             <button type="submit">Sign Up</button>
             <Link to="/">
               <button>Cancel</button>
