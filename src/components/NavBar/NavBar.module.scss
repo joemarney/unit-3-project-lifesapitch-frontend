@@ -1,19 +1,43 @@
-.container{
+.container {
     ul {
         display: flex;
         list-style-type: none;
         justify-content: space-evenly;
-        margin-bottom: 4vw ;
+        margin-bottom: 4vw;
         padding: 0;
     }
+
     a {
         text-decoration: none;
-        color: black;
-        border: 1px solid black;
-        border-radius: 5px;
+        //         color: black;
+        //         border: 1px solid black;
+        //         border-radius: 5px;
     }
 }
 
-@media (max-width: 700px) {
-    
+.mobileNav {
+    display: none;
+}
+
+
+
+@media (max-width: 600px) {
+
+
+    .desktopNav {
+        display: none;
+    }
+
+    .mobileNav {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 35px;
+
+
+    }
+
+    .NavLink {
+
+    }
 }

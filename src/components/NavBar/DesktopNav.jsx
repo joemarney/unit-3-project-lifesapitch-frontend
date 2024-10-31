@@ -1,19 +1,20 @@
 import NavLink from "./NavLink";
+import styles from './NavBar.module.scss'
 
-
-const DesktopNav = () => {
+const DesktopNav = (props) => {
 
     return (
-        <>
-        <nav className="DesktopNavigation">
-             <h2 className="logo">Logo</h2>
-             <NavLink />
-         </nav>
+
+        <nav className={styles.desktopNav}>
+
+            <NavLink user={props.user} handleSignOut={props.handleSignOut}/>
         
-        
-        
-        
-        </>
+        </nav>
+
+
+
+
+
     )
 }
 

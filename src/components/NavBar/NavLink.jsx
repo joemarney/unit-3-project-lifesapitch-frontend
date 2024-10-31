@@ -3,7 +3,7 @@ import styles from './NavBar.module.scss'
 
 export default function NavLink(props) {
     return (
-        <main className={styles.container}>
+        <main className={styles.container} onClick={props.handleClick}>
             {props.user ? (
                 <ul>
                     <li><Link to="/profile">Profile</Link></li>

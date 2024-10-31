@@ -10,29 +10,39 @@ import ImageUpload from "../../../components/ImageUpload/ImageUpload";
 // ! Styles
 import styles from "./AddCampsite.module.scss";
 
+
+let thing = {
+  title: "",
+  cost: "",
+  location: "",
+  fires: false,
+  toilets: false,
+  showers: false,
+  camperVans: false,
+  description: "",
+  images: [],
+}
+
+
+
 export default function AddCampsite(props) {
   const [imageUp, setImageUp] = useState(false);
 
-  const [formData, setFormData] = useState({
-    title: "",
-    cost: "",
-    location: "",
-    fires: false,
-    toilets: false,
-    showers: false,
-    camperVans: false,
-    description: "",
-    images: [],
-    coords: [],
-  });
+
+  const [formData, setFormData] = useState(
+    thing
+  );
+
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, close) => {
     e.preventDefault();
     const { data } = await create(formData);
     props.setSites((e) => [...e, data]);
+    setFormData(thing)
     navigate("/");
+    close()
   };
 
   function handleChange(event) {
@@ -51,6 +61,7 @@ export default function AddCampsite(props) {
     });
   }
 
+
   return (
     <>
       <Popup trigger={<button> Click to Add Campsite </button>} modal nested>
@@ -63,10 +74,10 @@ export default function AddCampsite(props) {
                 </button>
 
                 <h2> Provide Your Campsite Details</h2>
-                <form onSubmit={handleSubmit}>
-                  <label className={styles.title} htmlFor="title">
-                    Name of Campsite
-                  </label>
+
+                <form onSubmit={(e) => handleSubmit(e, close)}>
+                  <label className={styles.title} htmlFor="title" >Name of Campsite</label>
+
                   <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
 
                   <label className={styles.cost} htmlFor="cost">
@@ -88,6 +99,7 @@ export default function AddCampsite(props) {
 
                   <div className={styles.checkbox}>
                     <div className={styles.fires}>
+
                       <label htmlFor="fires">Fires</label>
                       <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
                     </div>
