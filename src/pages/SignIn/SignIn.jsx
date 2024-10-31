@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { signin } from "../../services/userService";
 
@@ -6,7 +6,6 @@ import { signin } from "../../services/userService";
 import styles from "../SignIn/SignIn.module.scss";
 
 export default function SignIn(props) {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -30,7 +29,6 @@ export default function SignIn(props) {
 
   return (
     <main className={styles.container}>
-      
       <section>
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
@@ -42,8 +40,12 @@ export default function SignIn(props) {
             <label htmlFor="password">Password:</label>
             <input type="password" name="password" id="password" placeholder="Password" onChange={handleChange} value={formData.password}></input>
           </div>
-
-          <button>Sign In</button>
+          <div className={styles.buttonContainer}>
+            <button>Sign In</button>
+            <Link to="/">
+              <button>Cancel</button>
+            </Link>
+          </div>
         </form>
       </section>
     </main>
