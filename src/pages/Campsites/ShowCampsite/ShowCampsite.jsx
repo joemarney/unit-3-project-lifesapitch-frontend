@@ -16,7 +16,6 @@ export default function ShowCampsite(props) {
   const mapRef = useRef();
   const mapContainerRef = useRef();
 
-  // if !campsite return loaagin
   useEffect(() => {
     if (campsite) {
       mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -62,6 +61,7 @@ export default function ShowCampsite(props) {
   const handleUpdateCampsite = () => {
     navigate(`/${campsiteId}/edit`);
   };
+
   if (!campsite) return <Loading />;
   return (
     <main>
