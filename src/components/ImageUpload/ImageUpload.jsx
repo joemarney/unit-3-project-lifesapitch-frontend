@@ -1,4 +1,6 @@
 import { imageUpload } from '../../services/imageUpload'
+import styles from '../../pages/Campsites/AddCampsite/AddCampsite.module.scss'
+
 
 export default function ImageUpload(props) {
 
@@ -24,7 +26,7 @@ export default function ImageUpload(props) {
     }
 
     return (
-        <div>
+        <div className={styles.image}>
             {props.formData.images.map((image) => {
                 return <img key={image} src={image} style={{width: '200px'}}/>
             })}

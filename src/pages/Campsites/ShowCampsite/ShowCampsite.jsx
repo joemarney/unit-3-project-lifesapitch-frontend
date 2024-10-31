@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { show, deleteCampsite } from "../../../services/campsiteService";
 import mapboxgl from "mapbox-gl";
 
+// ! Styles
+import styles from './ShowCampsite.module.scss'
+
 // ! Components
 import Loading from "../../../components/Loading/Loading";
 import Carousel from "../../../components/Carousel/Carousel";
@@ -65,28 +68,30 @@ export default function ShowCampsite(props) {
 
   if (!campsite) return <Loading />;
   return (
-    <main>
+    <main className={styles.container}>
       <section>
         <h1>{campsite.title}</h1>
         <Carousel images={campsite.images} />
-        <p>£{campsite.cost} pp.pn</p>
         <p>{campsite.description}</p>
+        <p>£{campsite.cost} pp.pn</p>
         <h3>Amenities:</h3>
-        <p>Fires: {campsite.fires === true ? "yes" : "no"}</p>
+        <div className={styles.amenities}>
+        <p>Fires: {campsite.fires === true ? 'yes' : 'no'}</p>
         <p>Toilets: {campsite.toilets === true ? "yes" : "no"}</p>
-        <p>Showers: {campsite.showers === true ? "yes" : "no"}</p>
+        <p>Showers: {campsite.showers === true ? "yes" : 'no'}</p>
         <p>Camper Vans: {campsite.camperVans === true ? "yes" : "no"}</p>
+        </div>
         <p>{campsite.location}</p>
         <div id="map-container" ref={mapContainerRef} />
-      </section>
       {props.user ? (
         props.user._id === campsite.campsiteOwner ? (
-          <>
+          <div className={styles.buttonContainer}>
             <button onClick={handleDeleteCampsite}>Delete {campsite.title}</button>
             <button onClick={handleUpdateCampsite}>Edit {campsite.title}</button>
-          </>
+          </div>
         ) : null
       ) : null}
+      </section>
     </main>
   );
 }

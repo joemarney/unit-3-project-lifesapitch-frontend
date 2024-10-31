@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // ! Styles
-import styles from "../Carousel/Carousel.module.scss";
+import styles from "./Carousel.module.scss";
 
 export default function Carousel(props) {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -16,9 +16,9 @@ export default function Carousel(props) {
 
   return (
     <div className={styles.container}>
-      <button onClick={prevSlide}>-</button>
+      <button onClick={prevSlide}><em></em></button>
       <img src={props.images[activeIdx]} alt={`Slide ${activeIdx}`} />
-      <button onClick={nextSlide}>+</button>
+      <button onClick={nextSlide}><i></i></button>
     </div>
   );
 }

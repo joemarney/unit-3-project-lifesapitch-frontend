@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 // ! Services
 import { index } from "../../../services/campsiteService";
+import Popup from "reactjs-popup"
 
 // ! Pages
 import AddCampsite from "../AddCampsite/AddCampsite";
@@ -12,6 +14,7 @@ import styles from "./ListCampsite.module.scss";
 
 export default function ListCampsite({ user }) {
   const [sites, setSites] = useState([]);
+
 
   useEffect(() => {
     const fetchSites = async () => {
@@ -25,14 +28,21 @@ export default function ListCampsite({ user }) {
     fetchSites();
   }, [setSites]);
 
+
+
+
+
+
+
   return (
     <>
-      <h1>Welcome to the Campsites</h1>
-
-      {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} /> : <h5>You need to be a campsite Owner to add new campsites</h5> : null}
-
-      <h3>Here you will find all of the campsites around the UK!</h3>
-
+    <div className={styles.headers}>
+      <h1>Life's a Pitch</h1>
+      {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} /> : null : null}
+      </div>
+  
+      
+            
       <main className={styles.container}>
         {sites.map((site) => {
           return (
@@ -41,7 +51,7 @@ export default function ListCampsite({ user }) {
                 <header>
                   <h2>{site.title}</h2>
                 </header>
-                <p>{site.cost} pp.pn</p>
+                <p className={styles.cost}>{site.cost} pp.pn</p>
                 <p>{site.location}</p>
               </article>
             </Link>
@@ -49,5 +59,5 @@ export default function ListCampsite({ user }) {
         })}
       </main>
     </>
-  );
+  )
 }
