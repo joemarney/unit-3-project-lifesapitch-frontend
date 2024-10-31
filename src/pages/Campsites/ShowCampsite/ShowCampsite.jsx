@@ -30,6 +30,7 @@ export default function ShowCampsite(props) {
         container: mapContainerRef.current,
         center: campsite.coords,
         zoom: 9,
+        style: "mapbox://styles/mapbox/navigation-night-v1",
       });
 
       return () => {
@@ -75,10 +76,10 @@ export default function ShowCampsite(props) {
         <p>£{campsite.cost} pp.pn</p>
         <h3>Amenities:</h3>
         <div className={styles.amenities}>
-          <p>Fires: {campsite.fires === true ? "yes" : "no"}</p>
-          <p>Toilets: {campsite.toilets === true ? "yes" : "no"}</p>
-          <p>Showers: {campsite.showers === true ? "yes" : "no"}</p>
-          <p>Camper Vans: {campsite.camperVans === true ? "yes" : "no"}</p>
+          <p>Fires: {campsite.fires === true ? "Yes" : "No"}</p>
+          <p>Toilets: {campsite.toilets === true ? "Yes" : "No"}</p>
+          <p>Showers: {campsite.showers === true ? "Yes" : "No"}</p>
+          <p>Camper Vans: {campsite.camperVans === true ? "Yes" : "No"}</p>
         </div>
         <p>{campsite.location}</p>
         <div id="map-container" ref={mapContainerRef} />

@@ -86,18 +86,8 @@ export default function UpdateCampsite(props) {
                 </button>
 
                 <form onSubmit={handleSubmit}>
-                  <label className={styles.title} htmlFor="title">
-                    Name of Campsite
-                  </label>
-                  <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
-
-                  <label className={styles.cost} htmlFor="cost">
-                    £ Cost Per Night
-                  </label>
-                  <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
-
                   <label className={styles.location} htmlFor="location">
-                    Location of Site
+                    Address
                   </label>
                   <SearchBox
                     accessToken={import.meta.env.VITE_MAPBOX_TOKEN}
@@ -107,6 +97,15 @@ export default function UpdateCampsite(props) {
                     }}
                     onRetrieve={handleRetrieve}
                   />
+                  <label className={styles.title} htmlFor="title">
+                    Name of Campsite
+                  </label>
+                  <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
+
+                  <label className={styles.cost} htmlFor="cost">
+                    £ Cost Per Night
+                  </label>
+                  <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
 
                   <div className={styles.checkbox}>
                     <div className={styles.fires}>
@@ -130,7 +129,7 @@ export default function UpdateCampsite(props) {
                   <label className={styles.description} htmlFor="description">
                     Description
                   </label>
-                  <input className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
+                  <textarea className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
 
                   <label htmlFor="images">Images:</label>
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />

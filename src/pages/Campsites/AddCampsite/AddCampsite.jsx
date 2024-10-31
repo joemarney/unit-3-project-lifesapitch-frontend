@@ -10,7 +10,6 @@ import ImageUpload from "../../../components/ImageUpload/ImageUpload";
 // ! Styles
 import styles from "./AddCampsite.module.scss";
 
-
 let thing = {
   title: "",
   cost: "",
@@ -22,18 +21,12 @@ let thing = {
   description: "",
   images: [],
   coords: [],
-}
-
-
+};
 
 export default function AddCampsite(props) {
   const [imageUp, setImageUp] = useState(false);
 
-
-  const [formData, setFormData] = useState(
-    thing
-  );
-
+  const [formData, setFormData] = useState(thing);
 
   const navigate = useNavigate();
 
@@ -41,9 +34,9 @@ export default function AddCampsite(props) {
     e.preventDefault();
     const { data } = await create(formData);
     props.setSites((e) => [...e, data]);
-    setFormData(thing)
+    setFormData(thing);
     navigate("/");
-    close()
+    close();
   };
 
   function handleChange(event) {
@@ -62,7 +55,6 @@ export default function AddCampsite(props) {
     });
   }
 
-
   return (
     <>
       <Popup trigger={<button> Click to Add Campsite </button>} modal nested>
@@ -71,23 +63,14 @@ export default function AddCampsite(props) {
             <div className={styles.container}>
               <div className={styles.Add}>
                 <button className={styles.close} onClick={() => close()}>
-                  X
+                  Ｘ
                 </button>
 
                 <h2> Provide Your Campsite Details</h2>
 
                 <form onSubmit={(e) => handleSubmit(e, close)}>
-                  <label className={styles.title} htmlFor="title" >Name of Campsite</label>
-
-                  <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
-
-                  <label className={styles.cost} htmlFor="cost">
-                    £ Cost Per Night
-                  </label>
-                  <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
-
                   <label className={styles.location} htmlFor="location">
-                    Location of Site
+                    Address
                   </label>
                   <SearchBox
                     accessToken={import.meta.env.VITE_MAPBOX_TOKEN}
@@ -97,10 +80,16 @@ export default function AddCampsite(props) {
                     }}
                     onRetrieve={handleRetrieve}
                   />
-
+                  <label className={styles.title} htmlFor="title">
+                    Name of Campsite
+                  </label>
+                  <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
+                  <label className={styles.cost} htmlFor="cost">
+                    £ Cost Per Night
+                  </label>
+                  <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
                   <div className={styles.checkbox}>
                     <div className={styles.fires}>
-
                       <label htmlFor="fires">Fires</label>
                       <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
                     </div>
@@ -120,15 +109,12 @@ export default function AddCampsite(props) {
                       <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
                     </div>
                   </div>
-
                   <label className={styles.description} htmlFor="description">
                     Description
                   </label>
                   <textarea className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
-
-                  <label htmlFor="images">Images:</label>9
+                  <label htmlFor="images">Images:</label>
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
-
                   <button className={styles.submit} type="submit" disabled={imageUp || formData.coords.length === 0}>
                     Add Campsite
                   </button>

@@ -3,6 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  h1 {
+    font-size: 60px;
+    margin: 0;
+  }
 }
 
 .container {
@@ -18,13 +22,17 @@
   article {
     flex-wrap: wrap;
     width: 300px;
-    height: 250px;
+    height: 180px;
     padding: 14px 21px;
     border-radius: 5px;
     box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
     background-color: #b4c292;
     transition: background-color 2s ease-out 100ms;
     border: 1px solid black;
+
+    p {
+      text-align: center;
+    }
   }
 
   article:hover {

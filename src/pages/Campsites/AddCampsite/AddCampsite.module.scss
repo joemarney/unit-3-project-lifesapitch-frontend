@@ -1,114 +1,106 @@
 .container {
-    background-color: rgb(128, 128, 128, 0.9);
-    height: 100vh;
-    width: 100vw;
+  background-color: rgb(128, 128, 128, 0.9);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+  }
+
+  .location {
+    margin-bottom: 1vh;
+  }
+
+  .Add {
+    background-color: antiquewhite;
+    width: 75vw;
+    height: auto;
+    border-radius: 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    padding: 2%;
 
+    .close {
+      align-self: flex-start;
 
-    h2 {
-        text-align: center;
+      border: 1px solid Black;
+      box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 1);
+      margin-top: 1%;
+
+      // position: relative;
+      // right: 35vw;
     }
 
-    .Add {
-        background-color: white;
-        width: 75vw;
-        height: auto;
-        border-radius: 10px;
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-direction: column;
+
+      label {
+        margin-top: 2vh;
+      }
+
+      input {
+        margin-top: 1vh;
+      }
+
+      .checkbox {
+        label {
+          margin-top: 1%;
+          margin-right: 1%;
+        }
+
+        input {
+          margin-top: 1%;
+          margin-right: 1%;
+        }
+
+        margin-top: 10%;
+        width: 40vw;
+
         display: flex;
+        justify-content: space-evenly;
         align-items: center;
-        flex-direction: column;
-        overflow: auto;
-        padding: 2%;
-        
-        .close {
-            align-self: flex-start;
+        justify-content: center;
 
+        div {
+          display: inline-flex;
+          flex-direction: row;
+          margin: 10px;
 
-            border: 1px solid Black;
-            box-shadow: 1px 1px 15px #888888;
-            margin-top: 1%;
-
-            
-            // position: relative;
-            // right: 35vw;
-
-
-        }
-
-        form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+          @media (max-width: 500px) {
             flex-direction: column;
-
-            label {
-                margin-top: 2vh;
-            }
-
-            input {
-                margin-top: 1vh;
-
-
-            }
-
-
-            .checkbox {
-                label {
-
-                    margin-top: 1%;
-                    margin-right: 1%;
-                }
-
-                input {
-                    margin-top: 1%;
-                    margin-right: 1%;
-                }
-
-                margin-top:10%;
-                width: 40vw;
-
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                justify-content: center;
-
-                div {
-                    display: inline-flex;
-                    flex-direction: row;
-                    margin: 10px;
-
-                    @media (max-width: 500px) {
-                        flex-direction: column;
-                        
-                    }
-
-                }
-
-            }
-
-            .descriptionBox {
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            .submit {
-                margin-top: 10%;
-                margin-bottom: 10%;
-            }
-
+          }
         }
+      }
+
+      .descriptionBox {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .submit {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.4);
+      }
     }
+  }
 }
 
 .image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    img {
-        margin-top: 10px;
-        width: 50px;
-    }
+  img {
+    margin-top: 10px;
+    width: 50px;
+  }
 }
