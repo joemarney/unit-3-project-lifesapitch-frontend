@@ -25,12 +25,13 @@
         display: none;
     }
 
-    //Hamburger button
+
     .mobileNav {
         display: flex;
         align-items: center;
+        align-items:flex-end;
         position: fixed;
-        top: 35px;
+
     }
 
     .close {
