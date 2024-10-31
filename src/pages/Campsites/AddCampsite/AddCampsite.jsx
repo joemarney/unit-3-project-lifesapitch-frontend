@@ -21,6 +21,7 @@ let thing = {
   camperVans: false,
   description: "",
   images: [],
+  coords: [],
 }
 
 
@@ -125,7 +126,7 @@ export default function AddCampsite(props) {
                   </label>
                   <textarea className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
 
-                  <label htmlFor="images">Images:</label>
+                  <label htmlFor="images">Images:</label>9
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
 
                   <button className={styles.submit} type="submit" disabled={imageUp || formData.coords.length === 0}>
