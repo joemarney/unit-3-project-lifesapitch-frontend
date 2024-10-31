@@ -15,7 +15,7 @@ Build a full stack CRUD app. The back-end made with Express and Node while the f
 
 ## Time Frame / Collaboration 
   - 1 week
-  - Working in collaboration with 'Joe Marney' 
+  - Working in collaboration with Joe Marney and Finn McDougall
 
 ## Technologies Used
     - Node.js

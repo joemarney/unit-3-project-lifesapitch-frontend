@@ -32,7 +32,7 @@ export default function App() {
   return (
     <main>
       <NavBar user={user} handleSignOut={handleSignOut} />
-      {user ? (
+      {/* {user ? (
         <>
           <h1>You are signed In</h1>
           <h2>Jinn Productions</h2>
@@ -42,7 +42,7 @@ export default function App() {
           <h1>You are not signed in</h1>
           <h2>Jinn Productions</h2>
         </>
-      )}
+      )} */}
       <Routes>
         <Route path="/" element={<Campsites user={user} />} />
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
