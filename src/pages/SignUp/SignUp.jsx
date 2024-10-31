@@ -5,21 +5,22 @@ import { signup } from "../../services/userService";
 // ! Images
 
 // ! Styles
+import styles from "../SignUp/SignUp.module.scss";
 
 export default function SignUp(props) {
   const [formData, setFormData] = useState({
     username: "",
-    email: '',
+    email: "",
     password: "",
     confirmPassword: "",
-    campsiteOwner: false
+    campsiteOwner: false,
   });
 
   const navigate = useNavigate();
 
   function handleChange(event) {
-    const {name, type, checked, value} = event.target
-    setFormData({ ...formData, [name]: type ==='checkbox' ? checked: value });
+    const { name, type, checked, value } = event.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   }
 
   async function handleSubmit(event) {
@@ -34,34 +35,39 @@ export default function SignUp(props) {
   }
 
   return (
-    <main>
+    <main className={styles.container}>
       <section>
         <form onSubmit={handleSubmit}>
           <h1>Sign Up</h1>
           <div>
             <label htmlFor="username">Username:</label>
+            <br></br>
             <input type="text" name="username" placeholder="John Doe" value={formData.username} onChange={handleChange} />
           </div>
           <div>
-            <label htmlFor='email'>Email:</label>
-            <input type='email' name='email' placeholder='johndoe@gmail.com' value={formData.email} onChange={handleChange} />
+            <label htmlFor="email">Email:</label>
+            <br></br>
+            <input type="email" name="email" placeholder="johndoe@gmail.com" value={formData.email} onChange={handleChange} />
           </div>
           <div>
             <label htmlFor="password">Password:</label>
+            <br></br>
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
           </div>
           <div>
             <label htmlFor="confirmPassword">Confirm Password:</label>
+            <br></br>
             <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} />
           </div>
           <div>
-          <label htmlFor="campsiteOwner">Are you an owner?</label>
-          <input type="checkbox" name="campsiteOwner" checked={formData.campsiteOwner} onChange={handleChange}></input>
+            <label htmlFor="campsiteOwner">Are you an owner?</label>
+            <br></br>
+            <input type="checkbox" name="campsiteOwner" checked={formData.campsiteOwner} onChange={handleChange}></input>
           </div>
           <div>
             <button type="submit">Sign Up</button>
             <Link to="/">
-              <button type="button">Cancel</button>
+              <button>Cancel</button>
             </Link>
           </div>
         </form>
