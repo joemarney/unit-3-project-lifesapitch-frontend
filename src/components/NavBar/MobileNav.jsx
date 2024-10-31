@@ -8,16 +8,16 @@ const MobileNav = (props) => {
     return (
         <nav className={styles.mobileNav}>
             <Popup trigger={<button>Hamburger</button>} modal nested>
-              {close => (
+                {close => (
 
-                  <>
-            <button className={styles.close} onClick={() => close()}>X</button>
-            <NavLink user={props.user} handleSignOut={props.handleSignOut} handleClick={props.handleClick}/>
-            </>
-              
+                    <>
+                        <button className={styles.close} onClick={() => close()}>X</button>
+                        <NavLink user={props.user} handleSignOut={props.handleSignOut} handleClick={props.handleClick} />
+                    </>
 
 
-              )}
+
+                )}
 
             </Popup>
 

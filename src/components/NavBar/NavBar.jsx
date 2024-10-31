@@ -10,25 +10,25 @@ import MobileNav from "./MobileNav";
 
 export default function NavBar(props) {
 
-const [isClosed, setIsClosed] = useState(true)
+  const [isClosed, setIsClosed] = useState(true)
 
-const handleClick = async () => {
-  await setIsClosed(false)
-  setIsClosed(true)
-}
+  const handleClick = async () => {
+    await setIsClosed(false)
+    setIsClosed(true)
+  }
 
   return (
     <main className={styles.container}>
 
-        
-
-<DesktopNav user={props.user} handleSignOut={props.handleSignOut}/>
-{isClosed && <MobileNav user={props.user} handleSignOut={props.handleSignOut} handleClick={handleClick}/>}
 
 
+      <DesktopNav user={props.user} handleSignOut={props.handleSignOut} />
+      {isClosed && <MobileNav user={props.user} handleSignOut={props.handleSignOut} handleClick={handleClick} />}
 
 
-{/* 
+
+
+      {/* 
       {props.user ? (
         <ul>
             <li><Link to="/profile">Profile</Link></li>
