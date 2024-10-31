@@ -66,17 +66,27 @@ export default function AddCampsite(props) {
 
                   {/* //? ================================= Checkboxes =================================  //? */}
                   <div className={styles.checkbox} >
+                    <div className={styles.fires}>
+
                     <label htmlFor="fires">Fires</label>
                     <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
+                    </div>
 
+                    <div className={styles.toilets}>
                     <label htmlFor="toilets">Toilets</label>
                     <input type="checkbox" name="toilets" checked={formData.toilets} onChange={handleChange} />
+                    </div>
 
+                    <div className={styles.showers}>
                     <label htmlFor="showers">Showers</label>
                     <input type="checkbox" name="showers" checked={formData.showers} onChange={handleChange} />
+                    </div>
 
-                    <label htmlFor="camperVans">Camper Vans</label>
+                    <div className={styles.campers}>
+                    <label htmlFor="camperVans">Campers</label>
                     <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
+                    </div>
+
                   </div>
                   {/* //? ================================= Checkboxes =================================  //? */}
 
