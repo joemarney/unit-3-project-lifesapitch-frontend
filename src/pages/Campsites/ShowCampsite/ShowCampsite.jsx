@@ -5,6 +5,7 @@ import mapboxgl from "mapbox-gl";
 
 // ! Components
 import Loading from "../../../components/Loading/Loading";
+import Carousel from "../../../components/Carousel/Carousel";
 
 export default function ShowCampsite(props) {
   //! State
@@ -67,16 +68,16 @@ export default function ShowCampsite(props) {
     <main>
       <section>
         <h1>{campsite.title}</h1>
-        <img src={campsite.images} />
+        <Carousel images={campsite.images} />
         <p>£{campsite.cost} pp.pn</p>
-        <p>{campsite.location}</p>
-        <div id="map-container" ref={mapContainerRef} />
         <p>{campsite.description}</p>
         <h3>Amenities:</h3>
         <p>Fires: {campsite.fires === true ? "yes" : "no"}</p>
         <p>Toilets: {campsite.toilets === true ? "yes" : "no"}</p>
         <p>Showers: {campsite.showers === true ? "yes" : "no"}</p>
         <p>Camper Vans: {campsite.camperVans === true ? "yes" : "no"}</p>
+        <p>{campsite.location}</p>
+        <div id="map-container" ref={mapContainerRef} />
       </section>
       {props.user ? (
         props.user._id === campsite.campsiteOwner ? (
