@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { show, deleteCampsite } from "../../../services/campsiteService";
 import mapboxgl from "mapbox-gl";
 
+// ! Components
+import Loading from "../../../components/Loading/Loading";
+
 export default function ShowCampsite(props) {
   //! State
   const [campsite, setCampsite] = useState(null);
@@ -13,7 +16,6 @@ export default function ShowCampsite(props) {
   const mapRef = useRef();
   const mapContainerRef = useRef();
 
-  // if !campsite return loaagin
   useEffect(() => {
     if (campsite) {
       mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -59,7 +61,8 @@ export default function ShowCampsite(props) {
   const handleUpdateCampsite = () => {
     navigate(`/${campsiteId}/edit`);
   };
-  if (!campsite) return <p>loading...</p>;
+
+  if (!campsite) return <Loading />;
   return (
     <main>
       <section>
