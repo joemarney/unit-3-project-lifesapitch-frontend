@@ -16,17 +16,13 @@ export default function AboutUs() {
         <img src="src/assets/images/FinnMcDougall.png" alt="A photo of a bald man,standing in a pink jumper with his hands on his hips" />
       </Link>
       <p>'I like Camping, it is cool'</p>
-      <p>
-        <strong>- Finn</strong>
-      </p>
+      <p className={styles.name}><strong>- Finn</strong></p>
 
       <Link to="https://github.com/joemarney" className="github-link">
         <img src="src/assets/images/JoeMarney.png" alt="A placeholder image of the silhouette of a figure" />
       </Link>
       <p>'Camping is the best way to spend a weekend'</p>
-      <p>
-        <strong>- Joe</strong>
-      </p>
+      <p className={styles.name}><strong>- Joe</strong></p>
     </main>
   );
 }

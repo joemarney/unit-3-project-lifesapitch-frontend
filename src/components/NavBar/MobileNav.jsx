@@ -8,6 +8,7 @@ const MobileNav = (props) => {
       <Popup trigger={<img src="src/assets/images/MenuIcon.png" style={{ width: "40px" }} className={styles.hamburger} />} modal nested>
         {(close) => (
           <>
+            
             <button className={styles.close} onClick={() => close()}>
               Ｘ
             </button>

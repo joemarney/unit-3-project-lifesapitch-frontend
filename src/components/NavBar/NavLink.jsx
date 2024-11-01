@@ -6,6 +6,7 @@ export default function NavLink(props) {
         <main className={styles.container} onClick={props.handleClick}>
             {props.user ? (
                 <ul>
+                    <h2 className={styles.titleDesk}>Lifes a Pitch</h2>
                     <li><Link to="/profile">Profile</Link></li>
                     <li><Link to="/">Campsites</Link></li>
                     <li><Link to="/checklist">Checklist</Link></li>
@@ -15,6 +16,7 @@ export default function NavLink(props) {
                 </ul>
             ) : (
                 <ul>
+                    <h1>Lifes a Pitch</h1>
                     <li><Link to="/">Campsites</Link></li>
                     <li><Link to="/signin">Sign In</Link></li>
                     <li><Link to="/signup">Sign Up</Link></li>

@@ -11,6 +11,7 @@
   h2,
   h3 {
     font-size: 30px;
+    margin-bottom: 5px;
   }
 
   img {
@@ -20,6 +21,24 @@
   }
 
   p {
-    margin: 0;
+    margin-right: 10%;
+    margin-left: 10%;
+    text-align: justify;
+  }
+
+  h2 {
+    margin-top: 5%;
+  }
+
+  a {
+    margin-bottom: 0px;
+  }
+  
+  .name {
+    margin-top: -5px;
+  }
+  
+  img {
+    margin-top: 40%;
   }
 }
