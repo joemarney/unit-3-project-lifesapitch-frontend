@@ -10,6 +10,8 @@ import { signup } from "../../services/userService";
 import styles from "../SignUp/SignUp.module.scss";
 
 export default function SignUp(props) {
+  const [errors, setErrors] = useState({});
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -33,6 +35,7 @@ export default function SignUp(props) {
       navigate("/");
     } catch (error) {
       console.log(error);
+      setErrors({ errorMessage: "Sign up failed. Please try again." });
     }
   }
 
@@ -66,6 +69,7 @@ export default function SignUp(props) {
             <br></br>
             <input type="checkbox" name="campsiteOwner" checked={formData.campsiteOwner} onChange={handleChange}></input>
           </div>
+          {errors ? <p>{errors.errorMessage}</p> : null}
           <div className={styles.buttonContainer}>
             <button type="submit">Sign Up</button>
             <Link to="/">
