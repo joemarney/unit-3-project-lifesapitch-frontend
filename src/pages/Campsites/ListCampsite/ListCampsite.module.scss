@@ -12,13 +12,14 @@
   }
 }
 
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-grow: 1;
   flex-wrap: wrap;
-  width: 100%;
+  width: fit-content;
   gap: 20px;
   padding: 20px;
 
