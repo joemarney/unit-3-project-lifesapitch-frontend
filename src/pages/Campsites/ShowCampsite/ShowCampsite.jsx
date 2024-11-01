@@ -4,7 +4,7 @@ import { show, deleteCampsite } from "../../../services/campsiteService";
 import mapboxgl from "mapbox-gl";
 
 // ! Styles
-import styles from "./ShowCampsite.module.scss";
+import styles from "../ShowCampsite/ShowCampsite.module.scss";
 
 // ! Components
 import Loading from "../../../components/Loading/Loading";

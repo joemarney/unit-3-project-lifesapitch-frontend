@@ -11,7 +11,7 @@ import ImageUpload from "../../../components/ImageUpload/ImageUpload";
 import { show } from "../../../services/campsiteService";
 
 // ! Styles
-import styles from "./UpdateCampsite.module.scss";
+import styles from "../UpdateCampsite/UpdateCampsite.module.scss";
 
 export default function UpdateCampsite() {
   const { campsiteId } = useParams();

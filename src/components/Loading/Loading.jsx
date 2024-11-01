@@ -1,5 +1,5 @@
 // ! Styles
-import styles from "./Loading.module.scss";
+import styles from "../Loading/Loading.module.scss";
 
 // ! Images
 

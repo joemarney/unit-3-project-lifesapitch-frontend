@@ -8,7 +8,7 @@ import { create } from "../../../services/campsiteService";
 import ImageUpload from "../../../components/ImageUpload/ImageUpload";
 
 // ! Styles
-import styles from "./AddCampsite.module.scss";
+import styles from "../AddCampsite/AddCampsite.module.scss";
 
 let thing = {
   title: "",

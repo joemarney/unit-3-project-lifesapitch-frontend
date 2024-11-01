@@ -12,7 +12,7 @@ import AddCampsite from "../AddCampsite/AddCampsite";
 import Loading from "../../../components/Loading/Loading";
 
 // ! Styles
-import styles from "./ListCampsite.module.scss";
+import styles from "../ListCampsite/ListCampsite.module.scss";
 
 export default function ListCampsite({ user }) {
   const [sites, setSites] = useState([]);
@@ -59,7 +59,6 @@ export default function ListCampsite({ user }) {
           );
         })}
       </main>
- 
     </>
   );
 }
