@@ -8,7 +8,7 @@ Build a full stack CRUD app. The back-end made with Express and Node while the f
 
 
 ## Image of Homepage
-![an image of the homepage of our app 'Lifes A Pitch'](../LAP-Frontend/src/assets/images/AppScreenshot.png)
+![an image of the homepage of our app 'Lifes A Pitch'](public/images/AppScreenshot.png)
 
 ## Code Installation
 [GitHub Link](https://github.com/joemarney/unit-3-project-lifesapitch-frontend.git)
