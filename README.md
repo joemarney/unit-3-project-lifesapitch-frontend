@@ -2,16 +2,17 @@
 Build a full stack CRUD app. The back-end made with Express and Node while the front-end made with React.  The API will be secured using JWTs.  The front-end will utilise AJAX to communicate with the back-end.
   
 ## Deployment Link
-
+[Deployment Link](https://lifesapitch.netlify.app/)
 
 ## Link to Front / Backend
+[ Backend GitHub Link](https://github.com/joemarney/unit-3-project-lifesapitch-backend.git)
 
 
 ## Image of Homepage
 ![an image of the homepage of our app 'Lifes A Pitch'](public/images/AppScreenshot.png)
 
 ## Code Installation
-[GitHub Link](https://github.com/joemarney/unit-3-project-lifesapitch-frontend.git)
+[Frontend GitHub Link](https://github.com/joemarney/unit-3-project-lifesapitch-frontend.git)
 
 ## Time Frame / Collaboration 
   - 1 week
