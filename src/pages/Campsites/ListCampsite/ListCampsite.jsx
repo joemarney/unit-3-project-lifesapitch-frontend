@@ -45,7 +45,8 @@ export default function ListCampsite({ user }) {
       {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} handleClick={handleClick}/> : null : null}
       </div>
   
-      
+      <div className={styles.outerDiv}>
+
             
       <main className={styles.container}>
         {sites.map((site) => {
@@ -62,6 +63,7 @@ export default function ListCampsite({ user }) {
           );
         })}
       </main>
+        </div>
     </>
   )
 }
