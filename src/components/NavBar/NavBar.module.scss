@@ -1,4 +1,9 @@
 .container {
+  background-color: antiquewhite;
+  position: sticky;
+  top: 0;
+  height: 10%;
+  width: 100%;
   ul {
     display: flex;
     list-style-type: none;
@@ -10,13 +15,6 @@
   a {
     text-decoration: none;
   }
-}
-.hamburger {
-  position: sticky;
-}
-
-nav {
-  position: sticky;
 }
 
 .mobileNav {
@@ -32,7 +30,7 @@ nav {
     display: flex;
     align-items: center;
     align-items: flex-end;
-    position: sticky;
+    position: relative;
   }
 
   .close {

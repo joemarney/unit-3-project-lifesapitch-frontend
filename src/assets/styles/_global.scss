@@ -5,6 +5,12 @@
 html,
 body {
   background: antiquewhite;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 10px;
 }
 
 button {
@@ -24,12 +30,14 @@ a {
   color: red;
 }
 
-//global mapbox styles
-
 #map-container {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   height: 200px;
-  width: 100%;
-  background-color: lightgray;
+  width: 90%;
+  background-color: antiquewhite;
+  margin: 10px;
 }
 
 button:hover {
