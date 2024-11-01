@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // ! Styles
-import styles from "./Checklist.module.scss";
+import styles from "../CheckList/CheckList.module.scss";
 
 export default function Checklist() {
   const [items, setItems] = useState([]);
