@@ -1,3 +1,8 @@
+.titleDesk {
+  vertical-align: top;
+  margin: 0;
+}
+
 .container {
   background-color: antiquewhite;
   position: sticky;
@@ -29,6 +34,10 @@
     display: flex;
     align-items: center;
     align-items: flex-end;
+<<<<<<< HEAD
+    position: sticky;
+=======
+>>>>>>> 1e5e38f7b45ac108be0a2e55458bdc9fa86d3177
   }
 
   .close {
@@ -59,3 +68,5 @@
     }
   }
 }
+
+

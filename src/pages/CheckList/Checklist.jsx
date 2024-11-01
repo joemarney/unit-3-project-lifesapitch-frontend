@@ -25,8 +25,9 @@ export default function Checklist() {
   return (
     <main className={styles.container}>
       <h1>Checklist</h1>
+      <h2>To help you pack your bag so you don't forget those all important items!</h2>
       {items.length === 0 ? (
-        <h2>To help you pack your bag so you don't forget those all important items!</h2>
+        null
       ) : (
         <ul>
           {items.map((item, idx) => {

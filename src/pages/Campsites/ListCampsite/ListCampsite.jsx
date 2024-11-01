@@ -41,7 +41,7 @@ export default function ListCampsite({ user }) {
   return (
     <> 
     <div className={styles.headers}>
-      <h1>Life's a Pitch</h1>
+      <h1>Campsites</h1>
       {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} handleClick={handleClick}/> : null : null}
       </div>
   
