@@ -8,6 +8,8 @@ import styles from "../SignIn/SignIn.module.scss";
 export default function SignIn(props) {
   const navigate = useNavigate();
 
+  const [errors, setErrors] = useState({});
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -21,6 +23,7 @@ export default function SignIn(props) {
       navigate("/");
     } catch (error) {
       console.log(error);
+      setErrors({ errorMessage: "Sign in failed. Please try again." });
     }
   };
   const handleChange = (e) => {
@@ -40,6 +43,7 @@ export default function SignIn(props) {
             <label htmlFor="password">Password:</label>
             <input type="password" name="password" id="password" placeholder="Password" onChange={handleChange} value={formData.password}></input>
           </div>
+          {errors ? <p>{errors.errorMessage}</p> : null}
           <div className={styles.buttonContainer}>
             <button>Sign In</button>
             <Link to="/">
