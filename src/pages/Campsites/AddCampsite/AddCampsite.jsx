@@ -24,6 +24,8 @@ let thing = {
 };
 
 export default function AddCampsite(props) {
+  const [errors, setErrors] = useState({});
+
   const [imageUp, setImageUp] = useState(false);
 
   const [formData, setFormData] = useState(thing);
@@ -32,11 +34,16 @@ export default function AddCampsite(props) {
 
   const handleSubmit = async (e, close) => {
     e.preventDefault();
-    const { data } = await create(formData);
-    props.setSites((e) => [...e, data]);
-    setFormData(thing);
-    navigate("/");
-    close();
+    try {
+      const { data } = await create(formData);
+      props.setSites((e) => [...e, data]);
+      setFormData(thing);
+      navigate("/");
+      close();
+    } catch (error) {
+      console.log(error);
+      setErrors({ errorMessage: "Failed to add campsite. Please try again." });
+    }
   };
 
   function handleChange(event) {
@@ -80,42 +87,37 @@ export default function AddCampsite(props) {
                     }}
                     onRetrieve={handleRetrieve}
                   />
-                  <label className={styles.title} htmlFor="title">
-                    Name of Campsite
-                  </label>
-                  <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
-                  <label className={styles.cost} htmlFor="cost">
-                    £ Cost Per Night
-                  </label>
-                  <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
+                  <label htmlFor="title">Name of Campsite</label>
+                  <input type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
+                  <label htmlFor="cost">£ Cost Per Night</label>
+                  <input type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
                   <div className={styles.checkbox}>
-                    <div className={styles.fires}>
+                    <div>
                       <label htmlFor="fires">Fires</label>
                       <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
                     </div>
 
-                    <div className={styles.toilets}>
+                    <div>
                       <label htmlFor="toilets">Toilets</label>
                       <input type="checkbox" name="toilets" checked={formData.toilets} onChange={handleChange} />
                     </div>
 
-                    <div className={styles.showers}>
+                    <div>
                       <label htmlFor="showers">Showers</label>
                       <input type="checkbox" name="showers" checked={formData.showers} onChange={handleChange} />
                     </div>
 
-                    <div className={styles.campers}>
+                    <div>
                       <label htmlFor="camperVans">Campers</label>
                       <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
                     </div>
                   </div>
-                  <label className={styles.description} htmlFor="description">
-                    Description
-                  </label>
-                  <textarea className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
+                  <label htmlFor="description">Description</label>
+                  <textarea type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
                   <label htmlFor="images">Images:</label>
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
-                  <button className={styles.submit} type="submit" disabled={imageUp || formData.coords.length === 0}>
+                  {errors ? <p>{errors.errorMessage}</p> : null}
+                  <button type="submit" disabled={imageUp || formData.coords.length === 0}>
                     Add Campsite
                   </button>
                 </form>

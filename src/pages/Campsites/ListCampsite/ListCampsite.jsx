@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 // ! Services
 import { index } from "../../../services/campsiteService";
-import Popup from "reactjs-popup"
+import Popup from "reactjs-popup";
 
 // ! Pages
 import AddCampsite from "../AddCampsite/AddCampsite";
+
+// ! Components
+import Loading from "../../../components/Loading/Loading";
 
 // ! Styles
 import styles from "./ListCampsite.module.scss";
 
 export default function ListCampsite({ user }) {
   const [sites, setSites] = useState([]);
-  const [isClosed, setIsClosed] = useState(true)
-
+  const [isClosed, setIsClosed] = useState(true);
 
   useEffect(() => {
     const fetchSites = async () => {
@@ -29,25 +30,20 @@ export default function ListCampsite({ user }) {
     fetchSites();
   }, [setSites]);
 
-
   const handleClick = async () => {
-    await setIsClosed(false)
-    setIsClosed(true)
-  }
+    await setIsClosed(false);
+    setIsClosed(true);
+  };
 
-
-
+  if (!sites) return <Loading />;
 
   return (
-    <> 
-    <div className={styles.headers}>
-      <h1>Campsites</h1>
-      {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} handleClick={handleClick}/> : null : null}
+    <>
+      <div className={styles.headers}>
+        <h1>Campsites</h1>
+        {user ? user.campsiteOwner ? <AddCampsite setSites={setSites} handleClick={handleClick} /> : null : null}
       </div>
-  
-      <div className={styles.outerDiv}>
 
-            
       <main className={styles.container}>
         {sites.map((site) => {
           return (
@@ -65,5 +61,5 @@ export default function ListCampsite({ user }) {
       </main>
         </div>
     </>
-  )
+  );
 }

@@ -54,7 +54,7 @@ export default function UpdateCampsite() {
       navigate(`/${data._id}`);
     } catch (error) {
       console.log(error);
-      setErrors(error.response.data);
+      setErrors({ errorMessage: "Failed to update campsite. Please try again." });
     }
   };
 
@@ -97,42 +97,38 @@ export default function UpdateCampsite() {
                     }}
                     onRetrieve={handleRetrieve}
                   />
-                  <label className={styles.title} htmlFor="title">
-                    Name of Campsite
-                  </label>
-                  <input className={styles.title} type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
+                  <label htmlFor="title">Name of Campsite</label>
+                  <input type="text" name="title" placeholder="Campsite Name" onChange={handleChange} value={formData.title} />
 
-                  <label className={styles.cost} htmlFor="cost">
-                    £ Cost Per Night
-                  </label>
-                  <input className={styles.cost} type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
+                  <label htmlFor="cost">£ Cost Per Night</label>
+                  <input type="number" name="cost" placeholder="10" onChange={handleChange} value={formData.cost} />
 
                   <div className={styles.checkbox}>
-                    <div className={styles.fires}>
+                    <div>
                       <label htmlFor="fires">Fires</label>
                       <input type="checkbox" name="fires" checked={formData.fires} onChange={handleChange} />
                     </div>
-                    <div className={styles.toilets}>
+                    <div>
                       <label htmlFor="toilets">Toilets</label>
                       <input type="checkbox" name="toilets" checked={formData.toilets} onChange={handleChange} />
                     </div>
-                    <div className={styles.showers}>
+                    <div>
                       <label htmlFor="showers">Showers</label>
                       <input type="checkbox" name="showers" checked={formData.showers} onChange={handleChange} />
                     </div>
-                    <div className={styles.campers}>
+                    <div>
                       <label htmlFor="camperVans">Camper Vans</label>
                       <input type="checkbox" name="camperVans" checked={formData.camperVans} onChange={handleChange} />
                     </div>
                   </div>
 
-                  <label className={styles.description} htmlFor="description">
-                    Description
-                  </label>
-                  <textarea className={styles.descriptionBox} type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
+                  <label htmlFor="description">Description</label>
+                  <textarea type="textarea" name="description" placeholder="Description of Campsite" onChange={handleChange} value={formData.description} />
 
                   <label htmlFor="images">Images:</label>
                   <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
+
+                  {errors ? <p>{errors.errorMessage}</p> : null}
 
                   <button type="submit" disabled={imageUp || formData.coords.length === 0}>
                     Confirm Edit

@@ -81,17 +81,19 @@
         }
       }
 
-      .descriptionBox {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .submit {
-        margin-top: 10%;
-        margin-bottom: 10%;
-        box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.4);
+      textarea {
+        font-family: inherit;
       }
     }
   }
+}
+button {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.4);
+}
+button:disabled {
+  opacity: 0.5;
 }
 
 .image {
