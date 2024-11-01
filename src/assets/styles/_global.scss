@@ -11,6 +11,7 @@ body {
 
 p {
   margin: 10px;
+  padding: 10px;
 }
 
 button {
@@ -31,13 +32,9 @@ a {
 }
 
 #map-container {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   height: 200px;
-  width: 90%;
+  width: 100%;
   background-color: antiquewhite;
-  margin: 10px;
 }
 
 button:hover {

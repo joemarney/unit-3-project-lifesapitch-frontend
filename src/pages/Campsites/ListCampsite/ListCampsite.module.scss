@@ -22,7 +22,8 @@
   article {
     flex-wrap: wrap;
     width: 300px;
-    height: 180px;
+    height: 250px;
+    overflow: auto;
     padding: 14px 21px;
     border-radius: 5px;
     box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
