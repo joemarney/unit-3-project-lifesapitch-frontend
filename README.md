@@ -8,8 +8,6 @@ Build a full stack CRUD app. The back-end made with Express and Node while the f
 
 ## Link to Front / Backend
 
-[ Backend GitHub Link](https://github.com/joemarney/unit-3-project-lifesapitch-backend.git)
-
 [Frontend](https://github.com/joemarney/unit-3-project-lifesapitch-frontend)
 
 [Backend](https://github.com/joemarney/unit-3-project-lifesapitch-backend)
